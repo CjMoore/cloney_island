@@ -14,7 +14,6 @@ describe "when guest visits '/'" do
  it "they see a form to login" do
    user = User.create(first_name: "Billy",
                last_name: "Goat",
-               username: "billygoat",
                password: "pass",
                phone: "555-555-5555",
                email: "billygoat@gmail.com",
