@@ -11,7 +11,7 @@ describe "when guest visits '/'" do
    expect(current_path).to eq(login_path)
  end
 
- it " when they clikc on login they see a form to login" do
+ it " when they click on login they see a form to login" do
    user = User.create(first_name: "Billy",
                last_name: "Goat",
                username: "billygoat",
