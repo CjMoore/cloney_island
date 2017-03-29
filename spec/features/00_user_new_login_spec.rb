@@ -17,13 +17,12 @@ describe "when guest visits '/'" do
                password: "pass",
                phone: "555-555-5555",
                email: "billygoat@gmail.com",
-               role: 0
               )
    visit login_path
 
   fill_in "session[username]", with: "billygoat"
   fill_in "session[password]", with: "pass"
 
-   expect(current_page).to eq(login_path)
+   expect(current_path).to eq(login_path)
  end
 end

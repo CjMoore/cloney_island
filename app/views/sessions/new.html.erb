@@ -1,0 +1,11 @@
+<h1>Login</h1>
+<div class="login-form">
+<%= form_for :session, url: login_path do |f| %>
+  <%= f.label :username %>
+  <%= f.text_field :username %>
+  <%= f.label :password %>
+  <%= f.password_field :password %>
+  <%= f.submit "Login" %>
+  <% end %>
+</div>
+<p>Dont have an account?<%= button_to "Create Account", signup_path, method: :get %> </p>
