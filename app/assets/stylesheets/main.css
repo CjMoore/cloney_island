@@ -1,0 +1,25 @@
+
+
+
+/*
+=======
+jumbotron
+=======
+*/
+
+.jumbo-background {
+  max-width: 100%;
+  background-color: #3A1DD0;
+  display: block;
+  margin-top: 0;
+}
+
+#welcome {
+  color: #81c784;
+}
+
+/*
+=======
+Homepage
+=======
+*/
