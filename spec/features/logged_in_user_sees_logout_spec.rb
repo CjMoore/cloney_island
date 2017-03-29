@@ -19,7 +19,6 @@ describe "when a user loggs in" do
 
    expect(current_path).to eq(root_path)
 
-  #  save_and_open_page
    within(".nav-wrapper") do
      expect(page).to have_content("Logout")
      expect(page).to_not have_content("Login")
