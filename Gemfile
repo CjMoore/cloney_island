@@ -42,6 +42,8 @@ group :development, :test do
   gem 'launchy'
   gem 'faker'
   gem 'database_cleaner'
+  gem 'pry'
+  gem 'rb-readline'
 end
 
 group :development do
