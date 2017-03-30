@@ -1,0 +1,21 @@
+<div class="container">
+  <h1>Projects</h1>
+  <div class="row">
+    <% @projects.each do |project| %>
+    <div class="col s3">
+          <div class="card">
+            <div class="card-image">
+              <img src=" <%= project.image_url %>>
+              <span class="card-title"><%= project.name %></span>
+            </div>
+            <div class="card-content">
+              <p> <%= project.description %> </p>
+            </div>
+            <div class="card-action">
+              <a href="/projects/<%= project.slug %>"> <%= project.name %></a>
+            </div>
+          </div>
+        </div>
+    <% end %>
+  </div>
+</div>

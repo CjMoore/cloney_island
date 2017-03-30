@@ -3,4 +3,8 @@ class ProjectsController < ApplicationController
     @current_project ||= Project.find_by_slug(params[:id])
     @comment = Comment.new
   end
+
+  def index
+    @projects = Project.all
+  end
 end
