@@ -37,7 +37,11 @@
     </div>
   </div>
   <div class="card-action">
-    <%= link_to "Register/Sign in to fund", '#', class: "btn right btn-color" %>
+    <% if current_user %>
+      <%= link_to "Fund", "#", class: "btn right btn-color" %>
+    <% else %>
+      <%= link_to "Register/Sign in to fund", '#', class: "btn right btn-color" %>
+    <% end %>
   </div>
 
   <div class="row">
@@ -56,7 +60,20 @@
       <div class="card ">
         <div class="card-content green-text">
           <h4>Comments</h4>
-          <p> <% @current_project.comments %> </p>
+          <%= render partial: 'comments/new' %>
+
+          <% @current_project.comments.each do |comment| %>
+            <div class="row">
+              <div class="col s12 m6">
+                <div class="card">
+                  <div class="card-content">
+                    <span class="card-title"><%= comment.author %></span>
+                    <p><%= comment.content %></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% end  %>
         </div>
       </div>
     </div>
