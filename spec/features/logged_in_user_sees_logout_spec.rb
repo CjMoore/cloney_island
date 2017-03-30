@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe "when a user loggs in" do
+describe "when a user logs in" do
   it "'login' turns into 'logout' on nav" do
     user = User.create(first_name: "Billy",
                 last_name: "Goat",

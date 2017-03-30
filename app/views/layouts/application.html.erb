@@ -12,6 +12,12 @@
 
   <body>
     <%= render partial: "shared/nav" %>
+<div class="container">
+    <% flash.each do |type, msg| %>
+      <%= content_tag :div, sanitize(msg), class: type %>
+    <% end %>
+
     <%= yield %>
+</div>
   </body>
 </html>
