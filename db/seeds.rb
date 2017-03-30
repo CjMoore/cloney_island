@@ -43,6 +43,7 @@ class Seed
   end
 end
 
+Comment.destroy_all
 Project.destroy_all
 User.destroy_all
 
