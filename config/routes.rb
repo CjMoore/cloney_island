@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root "home#index"
 
-  resources :projects, only: [:show]
+  resources :projects, only: [:show, :index]
 
   get      '/login', to: 'sessions#new', as: "login"
   get      '/signup', to: 'users#new'

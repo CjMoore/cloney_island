@@ -26,6 +26,20 @@ class Seed
       puts "Project Name: #{project.name} #{i}"
     end
   end
+
+  def generate_users
+    2.times do |i|
+      user = User.create!(
+      first_name: Faker::Name.first_name
+      last_name: Faker::Name.last_name
+      username: Faker::Hacker.noun
+      password_digest: "password"
+      email: Faker::Internet.email
+      phone: Faker::PhoneNumber.cell_phone
+      avatar_url: Faker::Avatar.image
+      )
+    end
+  end
 end
 
 Seed.start
