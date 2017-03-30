@@ -1,3 +1,5 @@
+<div class="container">
+
 <h1>Login</h1>
 <div class="login-form">
 <%= form_for :session, url: login_path do |f| %>
@@ -9,3 +11,4 @@
   <% end %>
 </div>
 <p>Dont have an account?<%= button_to "Create Account", signup_path, method: :get %> </p>
+</div>

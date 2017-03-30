@@ -1,0 +1,27 @@
+
+
+/*colors*/
+
+$greenish: #81c784;
+$plurple: #3A1DD0;
+$the-orange: #ff9800;
+
+
+.status-bar {
+  background-color: $greenish;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+#status-size {
+  height: 30px;
+  margin: 5px 0 5px 0;
+}
+
+.status-color {
+  background: $plurple;
+}
+
+.btn-color {
+  background: $plurple;
+}
