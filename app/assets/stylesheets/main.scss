@@ -1,0 +1,33 @@
+
+/*
+=======
+colors
+=======
+*/
+
+$greenish: #81c784;
+$plurple: #3A1DD0;
+$the-orange: #ff9800;
+
+/*
+=======
+jumbotron
+=======
+*/
+
+.jumbo-background {
+  max-width: 100%;
+  background-color: $plurple;
+  display: block;
+  margin-top: 0;
+}
+
+#welcome {
+  color: $greenish;
+}
+
+/*
+=======
+Homepage
+=======
+*/
