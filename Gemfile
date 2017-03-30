@@ -42,6 +42,7 @@ group :development, :test do
   gem 'launchy'
   gem 'faker'
   gem 'database_cleaner'
+  gem 'shoulda-matchers'
 end
 
 group :development do

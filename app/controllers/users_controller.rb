@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     if @user.save
       session[:user_id] = @user.id
       flash[:notice] = "Logged in as #{@user.first_name}"
-      redirect_to dashboard_path
+      redirect_to root_path
     else
       render :new
     end

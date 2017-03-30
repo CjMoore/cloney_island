@@ -27,8 +27,6 @@ describe "when guest visits '/'" do
     click_on("Login")
   end
 
-  # save_and_open_page
-
    expect(current_path).to eq(root_path)
  end
 end
