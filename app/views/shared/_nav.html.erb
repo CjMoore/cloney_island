@@ -1,13 +1,16 @@
 <nav>
   <div class="nav-wrapper green lighten-2">
-    <%= link_to "Crowdfunder", root_path, class:"brand-logo" %>
-    <ul id="nav-mobile" class="right hide-on-med-and-down">
-      <% if current_user %>
-        <li><%= link_to "Logout", logout_path, method: :delete %></li>
-      <% else %>
-        <li> <%= link_to "Login", login_path %> </li>
-      <% end %>
-      <li><a href="#">Projects</a></li>
-    </ul>
+
+    <div class="container">
+      <%= link_to "Crowdfunder", root_path, class:"brand-logo" %>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <% if current_user %>
+          <li><%= link_to "Logout", logout_path, method: :delete %></li>
+        <% else %>
+          <li> <%= link_to "Login", login_path %> </li>
+        <% end %>
+        <li> <%= link_to "Projects", projects_path %> </li>
+      </ul>
+    </div>
   </div>
 </nav>

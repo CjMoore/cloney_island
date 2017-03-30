@@ -1,0 +1,24 @@
+<div class="container">
+
+<h1>Create your account</h1>
+
+<%= form_for @user, url: signup_path do |f| %>
+  <%= f.label :first_name %>
+  <%= f.text_field :first_name %>
+  <%= f.label :last_name %>
+  <%= f.text_field :last_name %>
+  <%= f.label :avatar_url, "Profile photo url" %>
+  <%= f.text_field :avatar_url %>
+  <%= f.label :email %>
+  <%= f.text_field :email %>
+  <%= f.label :phone %>
+  <%= f.text_field :phone %>
+  <%= f.label :username %>
+  <%= f.text_field :username %>
+  <%= f.label :password %>
+  <%= f.text_field :password %>
+  <%= f.label :password_confirmation %>
+  <%= f.text_field :password_confirmation %>
+  <%= f.submit "Create Account"  %>
+<% end %>
+</div>
