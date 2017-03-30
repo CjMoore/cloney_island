@@ -14,7 +14,7 @@ class Seed
       name: Faker::Name.name,
       description: Faker::StarWars.wookie_sentence,
       total: Faker::Number.between(1, 100),
-      time: Faker::Time.between(DateTime.now - 1, DateTime.now),
+      time: Faker::Time.forward(Random.new.rand(3..30), :morning),
       image_url: Faker::Avatar.image
       )
       2.times do |i|
