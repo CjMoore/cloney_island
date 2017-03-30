@@ -1,7 +1,7 @@
 class Project < ApplicationRecord
   has_many :comments
   validates :name, :description, :total, :time, presence: true
-  validates :slug, uniqueness: true, presence: true
+  validates :slug, uniqueness: true
 
   before_validation :generate_slug
 

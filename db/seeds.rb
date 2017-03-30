@@ -1,6 +1,10 @@
 #only generate 50 projects
 #generate 1-2 comments per project using lorem ipsum
 
+Comment.destroy_all
+Project.destroy_all
+User.destroy_all
+
 class Seed
   def self.start
     seed = Seed.new
@@ -11,7 +15,7 @@ class Seed
   def generate_projects
     50.times do |i|
       project = Project.create!(
-      name: "project#{i}",
+      name: Faker::Name.name,
       description: Faker::StarWars.wookie_sentence,
       total: Faker::Number.between(1, 100),
       time: Faker::Time.between(DateTime.now - 1, DateTime.now),
@@ -46,5 +50,6 @@ end
 Comment.destroy_all
 Project.destroy_all
 User.destroy_all
+
 
 Seed.start
