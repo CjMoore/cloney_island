@@ -1,6 +1,6 @@
 <nav>
   <div class="nav-wrapper green lighten-2">
-    <div class="container">  
+    <div class="container">
       <%= link_to "Crowdfunder", root_path, class:"brand-logo" %>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <% if current_user %>
@@ -8,7 +8,7 @@
         <% else %>
           <li> <%= link_to "Login", login_path %> </li>
         <% end %>
-        <li><a href="#">Projects</a></li>
+        <li> <%= link_to "Projects", projects_path %> </li>
       </ul>
     </div>
   </div>
