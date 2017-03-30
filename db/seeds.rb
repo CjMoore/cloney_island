@@ -33,7 +33,7 @@ class Seed
       user = User.create!(
       first_name: Faker::Name.first_name,
       last_name: Faker::Name.last_name,
-      username: Faker::Hacker.noun,
+      username: "username#{i}",
       password: "password",
       email: Faker::Internet.email,
       phone: Faker::PhoneNumber.cell_phone,
