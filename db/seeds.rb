@@ -1,6 +1,3 @@
-#only generate 50 projects
-#generate 1-2 comments per project using lorem ipsum
-
 Comment.destroy_all
 Project.destroy_all
 User.destroy_all
