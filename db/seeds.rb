@@ -11,7 +11,7 @@ class Seed
   def generate_projects
     50.times do |i|
       project = Project.create!(
-      name: Faker::Name.name,
+      name: "project#{i}",
       description: Faker::StarWars.wookie_sentence,
       total: Faker::Number.between(1, 100),
       time: Faker::Time.between(DateTime.now - 1, DateTime.now),
