@@ -1,6 +1,10 @@
 #only generate 50 projects
 #generate 1-2 comments per project using lorem ipsum
 
+Comment.destroy_all
+Project.destroy_all
+User.destroy_all
+
 class Seed
   def self.start
     seed = Seed.new
@@ -33,7 +37,7 @@ class Seed
       user = User.create!(
       first_name: Faker::Name.first_name,
       last_name: Faker::Name.last_name,
-      username: Faker::Hacker.noun,
+      username: "username#{i}",
       password: "password",
       email: Faker::Internet.email,
       phone: Faker::PhoneNumber.cell_phone,
@@ -43,7 +47,9 @@ class Seed
   end
 end
 
+Comment.destroy_all
 Project.destroy_all
 User.destroy_all
+
 
 Seed.start
