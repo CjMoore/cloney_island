@@ -6,9 +6,10 @@ describe "Guest" do
 
     visit "/projects/#{project.slug}"
 
-    expect(page).to have_content(project.slug)
+    expect(page).to have_content("Test's")
     expect(page).to have_content("Description")
+    expect(page).to have_content("test")
     expect(page).to have_content("Comments")
-    expect(page).to have_content("Register/Sign in to fund")
+    expect(page).to have_link("Register/Sign in to fund")
   end
 end
