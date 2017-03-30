@@ -1,0 +1,64 @@
+
+<div class="container">
+
+  <div class="row">
+    <div class="col s4">
+      <h1 class="center"> <%= @current_project.name %> </h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="card col s5">
+      <div class="card-image">
+        <%= image_tag @current_project.image_url %>
+      </div>
+    </div>
+    <div class="col s2">
+      <p></p>
+    </div>
+    <div class="status-bar col s5">
+      <div class="status-color" style="width:50%">
+        <p id="status-size"></p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s3">
+        <p></p>
+      </div>
+      <div class="card col s1 deep-orange lighten-3">
+        <h6 class=>Total Needed: <%= @current_project.total %><h6>
+      </div>
+      <div class="col s1">
+        <p></p>
+      </div>
+      <div class="card col s1 deep-orange lighten-3">
+        <%= format_date(@current_project.time) %>
+      </div>
+    </div>
+  </div>
+  <div class="card-action">
+    <%= link_to "Register/Sign in to fund", '#', class: "btn right btn-color" %>
+  </div>
+
+  <div class="row">
+    <div class="col s12">
+      <div class="card ">
+        <div class="card-content green-text">
+          <h4>Description</h4>
+          <p><%= @current_project.description %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col s12">
+      <div class="card ">
+        <div class="card-content green-text">
+          <h4>Comments</h4>
+          <p> <% @current_project.comments %> </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
