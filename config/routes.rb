@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root "home#index"
 
-  resources :projects, only: [:show, :index] do
+  resources :projects, only: [:show, :index, :new, :create] do
     resources :comments, only: [:create]
   end
 

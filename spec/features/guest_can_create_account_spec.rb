@@ -15,7 +15,6 @@ describe "when guest completes create account form" do
     fill_in "Password confirmation", with: "password"
 
     click_on "Create Account"
-
     expect(current_path).to eq(root_path)
     expect(User.first.roles.first.name).to eq("registered_user")
   end

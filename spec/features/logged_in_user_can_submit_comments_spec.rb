@@ -1,9 +1,20 @@
 require "rails_helper"
 
 describe "when logged in user is on project show" do
-  it "they can submit a comment" do
-    user = create(:user)
-    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+  xit "they can submit a comment" do
+    user = create(:user, username: "billygoat", password:"pass")
+    visit login_path
+
+   fill_in "session[username]", with: "billygoat"
+   fill_in "session[password]", with: "pass"
+
+   within(".login-form") do
+     click_on("Login")
+   end
+
+   within(".nav-wrapper") do
+     expect(page).to have_content("Logout")
+   end
 
     project = create(:project)
 
