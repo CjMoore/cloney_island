@@ -2,7 +2,7 @@
 
   <h1>Thanks for your funding!</h1>
 
-<%= form_for(@funds) do |f|%>
+<%= form_for([@project, @funds]) do |f|%>
 
   <%= f.label :amount %>
   <%= f.text_field :amount%>
