@@ -5,6 +5,8 @@ Rails.application.routes.draw do
     resources :comments, only: [:create]
   end
 
+  resources :user_funded_projects, only: [:create]
+  
   get      '/login',  to: 'sessions#new', as: "login"
   get      '/signup', to: 'users#new'
   post     '/login',  to: 'sessions#create'

@@ -13,6 +13,6 @@ describe "when logged in user is on project show" do
     click_on("Fund")
 
     expect(page).to have_content("Amount")
-    expect(page).to have_content("Credit Card Number")
+    expect(page).to have_content("Credit card number")
   end
 end
