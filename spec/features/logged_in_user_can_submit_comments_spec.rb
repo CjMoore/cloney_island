@@ -24,7 +24,7 @@ describe "when logged in user is on project show" do
 
     expect(page).to_not have_link("Register/Sign in to fund")
     expect(page).to have_link("Fund")
-    save_and_open_page
+
     fill_in "comment[content]", with: "this is a comment"
     click_on "Submit Comment"
 
