@@ -12,7 +12,7 @@ class Seed
   def generate_projects
     50.times do |i|
       project = Project.create!(
-      name: Faker::Name.name,
+      name: "project#{i}",
       description: Faker::StarWars.wookie_sentence,
       total: Faker::Number.between(1, 100),
       time: Faker::Time.forward(Random.new.rand(3..30), :morning),
@@ -43,10 +43,5 @@ class Seed
     end
   end
 end
-
-Comment.destroy_all
-Project.destroy_all
-User.destroy_all
-
 
 Seed.start
