@@ -40,7 +40,7 @@
     <% if current_user %>
       <%= link_to "Fund", project_funds_path(@current_project), class: "btn right btn-color" %>
     <% else %>
-      <%= link_to "Register/Sign in to fund", '#', class: "btn right btn-color" %>
+      <%= link_to "Register/Sign in to fund", login_path, class: "btn right btn-color" %>
     <% end %>
   </div>
 
@@ -60,8 +60,9 @@
       <div class="card ">
         <div class="card-content green-text">
           <h4>Comments</h4>
+          <% if current_user %>
           <%= render partial: 'comments/new' %>
-
+          <% end %>
           <% @current_project.comments.each do |comment| %>
             <div class="row">
               <div class="col s12 m6">
