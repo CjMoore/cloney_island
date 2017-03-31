@@ -39,22 +39,11 @@ ActiveRecord::Schema.define(version: 20170330234853) do
     t.string "name"
   end
 
-  create_table "roles_tables", force: :cascade do |t|
-    t.string "name"
-  end
-
   create_table "user_roles", force: :cascade do |t|
     t.integer "user_id"
     t.integer "role_id"
     t.index ["role_id"], name: "index_user_roles_on_role_id", using: :btree
     t.index ["user_id"], name: "index_user_roles_on_user_id", using: :btree
-  end
-
-  create_table "user_roles_tables", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "role_id"
-    t.index ["role_id"], name: "index_user_roles_tables_on_role_id", using: :btree
-    t.index ["user_id"], name: "index_user_roles_tables_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -72,6 +61,4 @@ ActiveRecord::Schema.define(version: 20170330234853) do
   add_foreign_key "comments", "projects"
   add_foreign_key "user_roles", "roles"
   add_foreign_key "user_roles", "users"
-  add_foreign_key "user_roles_tables", "roles"
-  add_foreign_key "user_roles_tables", "users"
 end

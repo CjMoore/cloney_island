@@ -8,6 +8,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
+      @user.roles << Role.find_or_create_by(name: "registered_user")
       flash[:notice] = "Logged in as #{@user.first_name}"
       redirect_to root_path
     else
