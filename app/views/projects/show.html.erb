@@ -38,7 +38,7 @@
   </div>
   <div class="card-action">
     <% if current_user %>
-      <%= link_to "Fund", "#", class: "btn right btn-color" %>
+      <%= link_to "Fund", funds_path, class: "btn right btn-color" %>
     <% else %>
       <%= link_to "Register/Sign in to fund", '#', class: "btn right btn-color" %>
     <% end %>
