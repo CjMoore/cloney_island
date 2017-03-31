@@ -4,7 +4,6 @@ describe "An reg user" do
  it "has a registered user role" do
    project = create(:project)
    reg_user = create(:user, username: "billygoat")
-   guest = create(:user)
    role = Role.create(name: "registered_user")
    reg_user.roles << role
    visit login_path
@@ -16,13 +15,13 @@ describe "An reg user" do
     click_on("Login")
    end
    expect(reg_user.roles[0].name).to eq("registered_user")
-
   end
 
-  xit "guest cannot see users show page" do
+  it "guest cannot see users show page" do
+    project = create(:project)
 
-    visit "/projects/#{project.slug}/fund"
+    visit "/projects/#{project.slug}/funds"
 
-    expect(current_path).to eq(login_path)
+    expect(current_path).to eq(root_path)
   end
 end
