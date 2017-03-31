@@ -2,6 +2,7 @@ require "rails_helper"
 
 describe "An reg user" do
  it "has a registered user role" do
+   project = create(:project)
    reg_user = create(:user, username: "billygoat")
    guest = create(:user)
    role = Role.create(name: "registered_user")
@@ -20,7 +21,7 @@ describe "An reg user" do
 
   xit "guest cannot see users show page" do
 
-    visit "/:project_id/fund"
+    visit "/projects/#{project.slug}/fund"
 
     expect(current_path).to eq(login_path)
   end
