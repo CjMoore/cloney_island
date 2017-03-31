@@ -21,10 +21,10 @@ describe "as a reg user I can create a new project" do
    within(".nav-wrapper") do
      expect(page).to have_content("Logout")
    end
-
     within(".nav-wrapper") do
       click_on("Start a Project")
     end
+    save_and_open_page
 
     expect(current_path).to eq(new_project_path)
   end

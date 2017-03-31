@@ -1,1 +1,29 @@
-<h1>HIIIII</h1>
+<h1></h1>
+<%= form_for :projects do |f| %>
+<%= f.label "Title" %>
+<%= f.text_area :content %>
+<%= f.label "Upload Images" %>
+<form action="#">
+  <div class="file-field input-field">
+    <div class="btn">
+      <span>File</span>
+      <input type="file" multiple>
+    </div>
+    <div class="file-path-wrapper">
+      <input class="file-path validate" type="text" placeholder="Upload one or more files">
+    </div>
+  </div>
+</form>
+<%= f.text_area :content %>
+<%= f.label "Description" %>
+<%= f.text_area :content %>
+<%= f.label "Total Time" %>
+<input class="with-gap" name="group3" type="radio" id="test5" checked />
+   <label for="test5">Red</label>
+<%= f.text_area :content %>
+<%= f.label "Amount to Raise" %>
+<%= f.text_area :content %>
+<%= f.label "Contributor Email" %>
+<%= f.text_area :content %>
+<%= f.submit "Create Project", class: "btn btn-color" %>
+<% end %>
