@@ -10,6 +10,8 @@ RSpec.describe Project, type: :model do
   # end
 
   context "relationships" do
+    it { should have_many :user_funded_projects }
+    it { should have_many :funders }
     it { should have_many :comments }
   end
 end

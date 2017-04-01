@@ -17,5 +17,6 @@ describe "when guest completes create account form" do
     click_on "Create Account"
 
     expect(current_path).to eq(root_path)
+    expect(User.first.roles.first.name).to eq("registered_user")
   end
 end
