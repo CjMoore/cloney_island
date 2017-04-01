@@ -17,7 +17,7 @@ class Seed
       project = Project.create!(
       name: Faker::Hipster.words.join(" "),
       description: Faker::Hipster.sentence(3),
-      total: Faker::Number.between(1, 100),
+      total: Faker::Number.between(1000, 20000),
       time: Faker::Time.forward(Random.new.rand(3..30), :morning),
       image_url: "http://www.fillmurray.com/g/200/200"
       )
@@ -57,7 +57,7 @@ class Seed
   end
 
   def generate_funds
-    
+
   end
 end
 
