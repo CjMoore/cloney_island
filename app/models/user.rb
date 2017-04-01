@@ -15,8 +15,8 @@ class User < ApplicationRecord
     roles.exists?(name: "registered_user")
   end
 
-  def project_funder_user?
-    roles.exists?(name: "project_funder_user")
+  def project_funder?
+    roles.exists?(name: "project_funder")
   end
 
 private

@@ -3,7 +3,7 @@ module ApplicationHelper
     current_user && current_user.registered_user?
   end
 
-  def project_funder_user?
-    current_user && current_user.project_funder_user?
+  def project_funder?
+    current_user && current_user.project_funder?
   end
 end

@@ -46,6 +46,5 @@ class Permission
     return true if controller == "projects" && action.in?(["index", "show", "new", "create"])
     return true if controller == "comments" && action.in?(["create"])
     return true if controller == "user_funded_projects" && action.in?(["new"])
-    return true if controller == ""
   end
 end
