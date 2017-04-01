@@ -16,6 +16,10 @@ class User < ApplicationRecord
     roles.exists?(name: "registered_user")
   end
 
+  def project_funder?
+    roles.exists?(name: "project_funder")
+  end
+
   def project_owner?
     roles.exists?(name: "project_owner")
   end
