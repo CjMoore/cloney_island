@@ -20,6 +20,10 @@ class UsersController < ApplicationController
     @registered_user ||= User.find_by_slug(params[:username])
   end
 
+  def edit
+    
+  end
+
   private
 
   def user_params
