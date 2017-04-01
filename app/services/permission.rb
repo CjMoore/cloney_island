@@ -16,6 +16,8 @@ class Permission
     case
     when user.registered_user?
       registered_user_permissions
+    when user.project_funder?
+      project_funder_permissions
     else
       guest_user_permissions
     end
@@ -39,7 +41,7 @@ class Permission
     return true if controller == "user_funded_projects" && action.in?(["new"])
   end
 
-  def project_funder_user
+  def project_funder_permissions
     return true if controller == "home"
     return true if controller == "sessions"
     return true if controller == "users"
