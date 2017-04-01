@@ -15,6 +15,11 @@ class User < ApplicationRecord
     roles.exists?(name: "registered_user")
   end
 
+  def project_owner?
+    roles.exists?(name: "project_owner")
+  end
+
+
 private
 
   def generate_slug
