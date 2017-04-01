@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   has_secure_password
-  validates :first_name, :last_name, :username, :email, :password, :phone, :slug, presence: true
+  validates :first_name, :last_name, :username, :email, :password, :phone, presence: true
   validates :email, :username, uniqueness: true
 
   has_many :user_funded_projects
@@ -14,6 +14,8 @@ class User < ApplicationRecord
   def registered_user?
     roles.exists?(name: "registered_user")
   end
+
+private
 
   def generate_slug
     self.slug = username.parameterize
