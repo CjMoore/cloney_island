@@ -4,8 +4,11 @@ Rails.application.routes.draw do
   resources :projects, only: [:show, :index, :new, :create] do
     resources :comments, only: [:create]
     resources :user_funded_projects, only: [:create]
+    # resources :user_owned_projects_path
     get      '/funds',  to: 'user_funded_projects#new'
   end
+
+  # post    "/projects/new", to: 'projects#create'
 
   get      '/login',    to: 'sessions#new', as: "login"
   get      '/signup',   to: 'users#new'

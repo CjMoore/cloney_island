@@ -1,25 +1,23 @@
 <div class="container">
   <h1>Start a Project</h1>
-
-<%= form_for :projects do |f| %>
-<%= f.label "Title" %>
-<%= f.text_field :name %>
-<%= f.label "Image URL" %>
-<%= f.text_field :image_url, placeholder: "www.image.com/your_image" %>
-<%= f.label "Description" %>
-<%= f.text_field :description %>
-<%= f.label "Total Time" %>
-<select class="browser-default" name= "time[month]">
-  <option value="7">1 Week</option>
-  <option value="31">1 Month</option>
-  <option value="90">3 Months</option>
-</select>
-<%= f.text_field :time %>
-<%= f.label "Amount to Raise" %>
-<%= f.text_field :total %>
-<%= f.label "Contributor Email" %>
-<%= f.text_field :contributor_email %>
-<%= f.submit "Create Project", class: "btn btn-color" %>
-<% end %>
-
+    <%= form_for @project do |f| %>
+      <%= f.label "Title" %>
+      <%= f.text_field :name %>
+      <%= f.label "Image URL" %>
+      <%= f.text_field :image_url, placeholder: "www.image.com/your_image" %>
+      <%= f.label "Description" %>
+      <%= f.text_field :description %>
+      <%= f.label "Total Time" %>
+      <!-- <select class="browser-default" name= "time[month]">
+        <option value="7">1 Week</option>
+        <option value="31">1 Month</option>
+        <option value="90">3 Months</option>
+      </select> -->
+      <%= f.text_field :time %>
+      <%= f.label "Amount to Raise" %>
+      <%= f.text_field :total %>
+      <!-- <%#= f.label "Contributor Email" %>
+      <%#= f.text_field :contributor_email %> -->
+      <%= f.submit "Create Project", class: "btn btn-color"%>
+    <% end %>
 </div>
