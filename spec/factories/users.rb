@@ -6,5 +6,6 @@ FactoryGirl.define do
     email { Faker::Internet.email }
     phone { Faker::PhoneNumber.cell_phone }
     username { Faker::Hacker.noun }
+    avatar_url { Faker::Avatar.image }
   end
 end
