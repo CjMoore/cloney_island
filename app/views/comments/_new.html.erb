@@ -1,8 +1,13 @@
-<%= form_for([@current_project, @comment]) do |f| %>
 
-  <%= f.label "Your Comment" %>
-  <%= f.text_area :content, class: "materialize-textarea" %>
+<div class="card comment-card" id="comment-form">
 
-  <%= f.submit "Submit Comment", class: "btn btn-color" %>
+  <%= form_for([@current_project, @comment]) do |f| %>
 
-<% end %>
+    <%= f.label "Your Comment", id: "comment-label" %>
+    <%= f.text_area :content, class: "materialize-textarea", id: "comment-content" %>
+
+    <%= f.submit "Submit Comment", class: "btn btn-color", id:"comment-submit" %>
+
+  <% end %>
+
+</div>
