@@ -17,11 +17,26 @@ class UsersController < ApplicationController
   end
 
   def show
+
     @registered_user ||= User.find_by_slug(params[:username])
   end
 
   def edit
     @user = User.find_by_slug(params[:slug])
+  end
+
+  def update
+    @registered_user = current_user
+    byebug
+    if params[:user][:new_password]
+
+    else
+      @registered_user.update_attributes(user_params)
+      @registered_user.save
+      flash[:notice] = "Account info updated"
+
+      redirect_to "/#{@registered_user.slug}"
+    end
   end
 
   private
@@ -35,6 +50,7 @@ class UsersController < ApplicationController
                             :phone,
                             :password,
                             :password_confirmation,
+                            :avatar_url,
                             :slug
                             )
   end
