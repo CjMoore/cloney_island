@@ -10,6 +10,8 @@ describe "when user" do
                phone: "555-555-5555",
                email: "billygoat@gmail.com",
               )
+    role = Role.create(name: "registered_user")
+    user.roles << role
   visit login_path
 
   fill_in "session[username]", with: "billygoat"
@@ -17,7 +19,7 @@ describe "when user" do
   within(".login-form") do
    click_on("Login")
   end
-  
+
    visit root_path
    within(".nav-wrapper") do
      click_on "Logout"
