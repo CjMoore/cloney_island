@@ -19,7 +19,10 @@ describe "when guest visits '/'" do
                phone: "555-555-5555",
                email: "billygoat@gmail.com",
               )
-   visit login_path
+
+  role = Role.create(name: "registered_user")
+  user.roles << role
+  visit login_path
 
   fill_in "session[username]", with: "billygoat"
   fill_in "session[password]", with: "pass"

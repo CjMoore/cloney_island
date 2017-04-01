@@ -6,4 +6,8 @@ module ApplicationHelper
   def project_funder?
     current_user && current_user.project_funder?
   end
+  
+  def project_owner?
+    current_user && current_user.project_owner?
+  end
 end
