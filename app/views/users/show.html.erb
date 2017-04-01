@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row">
+    <div class="card hoverable margin">
+      <div class="card-image left">
+        <%= image_tag @registered_user.avatar_url, class: "image-size" %>
+      </div>
+      <div class="card-content">
+        <span class="card-title"><%= @registered_user.first_name %> <%= @registered_user.last_name %></span>
+        <ul>
+          <li><%= @registered_user.email %></li>
+          <li><%= @registered_user.username %></li>
+        </ul>
+      </div>
+
+
+
+
+    </div>
+  </div>
+  <a class="waves-effect waves-light btn color right"> Edit</a>
+</div>

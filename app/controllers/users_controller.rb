@@ -16,6 +16,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def show
+    @registered_user ||= User.find_by_slug(params[:username])
+  end
+
   private
 
   def user_params
@@ -26,7 +30,8 @@ class UsersController < ApplicationController
                             :email,
                             :phone,
                             :password,
-                            :password_confirmation
+                            :password_confirmation,
+                            :slug
                             )
   end
 end
