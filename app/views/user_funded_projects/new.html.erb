@@ -1,15 +1,19 @@
 <div class="container">
 
-  <h1>Thanks for your funding!</h1>
+  <div class="card form-card">
+    <div class="card-content">
+      <span class="card-title black-text">Thanks for your funding!</span>
+      <div class="form">
+        <%= form_for([@project, @funds]) do |f|%>
 
-<%= form_for([@project, @funds]) do |f|%>
+        <%= f.label :amount %>
+        <%= f.text_field :amount%>
 
-  <%= f.label :amount %>
-  <%= f.text_field :amount%>
+        <%= f.label :credit_card_number %>
+        <%= f.text_field :credit_card_number %>
 
-  <%= f.label :credit_card_number %>
-  <%= f.text_field :credit_card_number %>
-
-<% end %>
-
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>

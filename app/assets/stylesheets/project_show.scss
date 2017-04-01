@@ -5,12 +5,30 @@
 $greenish: #81c784;
 $plurple: #3A1DD0;
 $the-orange: #ff9800;
+$beige: #f7f5f2;
 
 
 .status-bar {
-  background-color: $greenish;
-  border: 1px solid black;
-  border-radius: 10px;
+  // background-color: $greenish;
+  // border: .5px solid gray;
+  // border-radius: 10px;
+  margin: 20px 0 20px 0;
+  // background: #786acc;
+}
+
+#proj-total {
+  padding: 5px 0 5px 0;
+}
+
+#total-card {
+  width: 150px;
+  margin-left: 10px;
+}
+
+#date-card {
+  width: 150px;
+  padding: 5px 0 5px 0;
+  margin-left: 10px;
 }
 
 #status-size {
@@ -19,9 +37,70 @@ $the-orange: #ff9800;
 }
 
 .status-color {
-  background: $plurple;
+  border-radius: 5px;
+  margin-left: 5px;
+  background: linear-gradient(-90deg, $greenish, red);
 }
 
 .btn-color {
   background: $plurple;
+}
+
+.btn-color:hover{
+  background: $greenish
+}
+
+.proj-name {
+  color: $plurple
+}
+
+.status-card{
+  margin-top: 100px;
+  margin-left: 50px;
+  background: $beige
+}
+
+/*
+=====
+description
+=====
+*/
+
+#proj-description {
+  color: black
+}
+
+.proj-card {
+  margin-top: 20px;
+  background: $beige;
+}
+
+/*
+======
+Comments
+======
+*/
+.author {
+  margin-bottom: 50px;
+}
+
+#comment-label {
+  padding: 20px 0 0 10px;
+}
+
+.comment-card {
+  background: white;
+  border-radius: 10px;
+}
+
+
+//
+// #comment-content{
+//   // padding-left: 20px;
+//   padding-right: 20px;
+//   // width: 80%;
+// }
+
+#comment-submit {
+  margin: 0 0 20px 20px;
 }

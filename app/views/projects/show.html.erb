@@ -1,11 +1,16 @@
 
-<div class="container">
-
-  <div class="row">
-    <div class="col s4">
-      <h1 class="center"> <%= @current_project.name %> </h1>
+<div class="row project-jumbo">
+  <div class="col s12 m12">
+    <div class="icon-block">
+      <h2 class="center proj-name">
+        <%= @current_project.name %>
+      </h2>
+      <h4 class="center orange-text">By: placeholder_owner</h4>
     </div>
   </div>
+</div>
+
+<div class="container">
 
   <div class="row">
     <div class="card col s5">
@@ -13,29 +18,25 @@
         <%= image_tag @current_project.image_url %>
       </div>
     </div>
-    <div class="col s2">
-      <p></p>
+    <div class="col s1">
+      <p>
+
+      </p>
     </div>
-    <div class="status-bar col s5">
-      <div class="status-color" style="width:50%">
-        <p id="status-size"></p>
+    <div class="card col s6 status-card">
+      <div class="status-bar">
+        <div class="status-color" style="width:50%">
+          <p id="status-size"></p>
+        </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col s3">
-        <p></p>
-      </div>
-      <div class="card col s1 deep-orange lighten-3">
-        <h6 class=>Total Needed: <%= @current_project.total %><h6>
-      </div>
-      <div class="col s1">
-        <p></p>
-      </div>
-      <div class="card col s1 deep-orange lighten-3">
-        <%= format_date(@current_project.time) %>
+      <div class="card" id="total-card">
+        <h6 class="center" id="proj-total">Total Needed: <%= number_to_currency(@current_project.total, precision: 2) %><h6>
+        </div>
+        <div class="card left" id="date-card">
+          <h6 class="center"><%= format_date(@current_project.time) %></h6>
+        </div>
       </div>
     </div>
-  </div>
   <div class="card-action">
     <% if current_user %>
       <%= link_to "Fund", project_funds_path(@current_project), class: "btn right btn-color" %>
@@ -46,10 +47,10 @@
 
   <div class="row">
     <div class="col s12">
-      <div class="card ">
+      <div class="card proj-card">
         <div class="card-content green-text">
-          <h4>Description</h4>
-          <p><%= @current_project.description %></p>
+          <p>Description<p>
+          <h5 id="proj-description"><%= @current_project.description %></h5>
         </div>
       </div>
     </div>
@@ -57,19 +58,19 @@
 
   <div class="row">
     <div class="col s12">
-      <div class="card ">
-        <div class="card-content green-text">
-          <h4>Comments</h4>
+      <div class="card proj-card">
+        <div class="card-content">
+          <h6>Comments</h6>
           <% if current_user %>
           <%= render partial: 'comments/new' %>
           <% end %>
           <% @current_project.comments.each do |comment| %>
             <div class="row">
-              <div class="col s12 m6">
+              <div class="col s8">
                 <div class="card">
                   <div class="card-content">
-                    <span class="card-title"><%= comment.author %></span>
-                    <p><%= comment.content %></p>
+                    <p class="black-text"><%= comment.content %></p>
+                    <p class="right author" ><%= comment.author %></p>
                   </div>
                 </div>
               </div>
