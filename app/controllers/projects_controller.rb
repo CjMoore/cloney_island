@@ -13,12 +13,16 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    @username = current_user.username
+    @user = current_user
     @project = Project.new(project_params)
     if @project.save
-      #create a record in user owned projects table
+      role = Role.find_or_create_by(name: "project_owner")
+      @user.roles << role
+      @project.owners << @user
+      # @collaborator = User.find_or_create_by!(email: params[:contributor_email])
+      # @project.owners << @collaborator
       flash[:notice] = "Your project has been created!"
-      redirect_to username_path(@username)
+      redirect_to username_path(@user.username)
     else
       flash[:warning] = "Please try again."
       render :new
@@ -28,6 +32,6 @@ class ProjectsController < ApplicationController
   private
 
   def project_params
-    params.require(:project).permit(:name, :description, :image_url, :total, :time, :slug)
+    params.require(:project).permit(:name, :description, :image_url, :total, :slug)
   end
 end

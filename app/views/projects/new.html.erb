@@ -8,16 +8,15 @@
       <%= f.label "Description" %>
       <%= f.text_field :description %>
       <%= f.label "Total Time" %>
-      <!-- <select class="browser-default" name= "time[month]">
+      <select class="browser-default" name= "time[month]">
         <option value="7">1 Week</option>
         <option value="31">1 Month</option>
         <option value="90">3 Months</option>
-      </select> -->
-      <%= f.text_field :time %>
+      </select>
       <%= f.label "Amount to Raise" %>
       <%= f.text_field :total %>
-      <!-- <%#= f.label "Contributor Email" %>
-      <%#= f.text_field :contributor_email %> -->
+      <%= f.label "Contributor Email" %>
+      <input type="text" name="contributor_email"></input>
       <%= f.submit "Create Project", class: "btn btn-color"%>
     <% end %>
 </div>
