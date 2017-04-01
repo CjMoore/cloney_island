@@ -15,6 +15,10 @@ class User < ApplicationRecord
     roles.exists?(name: "registered_user")
   end
 
+  def project_funder_user?
+    roles.exists?(name: "project_funder_user")
+  end
+
 private
 
   def generate_slug
