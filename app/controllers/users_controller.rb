@@ -17,7 +17,6 @@ class UsersController < ApplicationController
   end
 
   def show
-
     @registered_user ||= User.find_by_slug(params[:username])
   end
 
@@ -26,16 +25,14 @@ class UsersController < ApplicationController
   end
 
   def update
-    @registered_user = current_user
-    byebug
+    @user = current_user
     if params[:user][:new_password]
 
     else
-      @registered_user.update_attributes(user_params)
-      @registered_user.save
+      @user.update_attributes(user_params)
+      @user.save
       flash[:notice] = "Account info updated"
-
-      redirect_to "/#{@registered_user.slug}"
+      redirect_to "/#{@user.slug}"
     end
   end
 
