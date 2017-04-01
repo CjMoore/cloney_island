@@ -21,7 +21,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-    
+    @user = User.find_by_slug(params[:slug])
   end
 
   private
