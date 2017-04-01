@@ -6,24 +6,23 @@
         <div class="card-content">
           <span class="card-title black-text">Start A Project</span>
           <div class="login-form">
-            <%= form_for :projects do |f| %>
+            <%= form_for :project do |f| %>
             <%= f.label "Title" %>
-            <%= f.text_field :content %>
+            <%= f.text_field :name %>
             <%= f.label "Image URL" %>
-            <%= f.text_field :content, placeholder: "www.image.com/your_image" %>
+            <%= f.text_field :image_url, placeholder: "www.image.com/your_image" %>
             <%= f.label "Description" %>
-            <%= f.text_field :content %>
+            <%= f.text_field :description %>
             <%= f.label "Total Time" %>
             <select class="browser-default" name= "time[month]">
               <option value="7">1 Week</option>
               <option value="31">1 Month</option>
               <option value="90">3 Months</option>
-            </select>
-            <%= f.text_field :content %>
+            </select>>
             <%= f.label "Amount to Raise" %>
-            <%= f.text_field :content %>
+            <%= f.text_field :total %>
             <%= f.label "Contributor Email" %>
-            <%= f.text_field :content %>
+            <input type="text" name="contributor_email"></input>
             <%= f.submit "Create Project", class: "btn btn-color" %>
             <% end %>
           </div>

@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     get      '/funds',  to: 'user_funded_projects#new'
   end
 
-  # post    "/projects/new", to: 'projects#create'
+  post    "/projects/new", to: 'projects#create'
 
   get      '/login',    to: 'sessions#new', as: "login"
   get      '/signup',   to: 'users#new'
