@@ -47,6 +47,15 @@ describe "project owner has permissions" do
 
     expect(current_path).to eq("/#{@user.slug}")
   end
+  it "can logout" do
+    visit root_path
+
+    within(".nav-wrapper") do
+      click_on("Logout")
+    end
+
+    expect(current_path).to eq(root_path)
+  end
 
   context "does not have permission to visit" do
     it "login page" do
