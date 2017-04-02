@@ -15,4 +15,8 @@ class Project < ApplicationRecord
   def generate_slug
     self.slug = name.parameterize
   end
+
+  def total_funds
+    user_funded_projects.sum(:amount)
+  end
 end

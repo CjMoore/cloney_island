@@ -13,4 +13,8 @@ module ProjectHelper
     time_remaining = " #{num_days} days, #{num_hours} hours remaining to fund!"
     time_remaining
   end
+
+  def percent_funded(total, funds)
+    ((funds.to_f/total.to_f)*100).round(0)
+  end
 end

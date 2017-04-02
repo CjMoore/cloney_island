@@ -13,6 +13,7 @@ class User < ApplicationRecord
   has_many :owned_projects, through: :user_owned_projects, source: :project
 
   before_validation :generate_slug
+  # before_update :generate_slug
 
   def registered_user?
     roles.exists?(name: "registered_user")
