@@ -15,9 +15,9 @@ class ProjectsController < ApplicationController
   def create
     @user = current_user
     @project = Project.new(project_params)
+    days = params[:time][:month].to_i
+    @project.update_attribute(:time, (Time.now.to_date + days) )
     if @project.save
-      days = params[:time][:month].to_i
-      @project.update_attribute(:time, (Time.now.to_date + days) )
       @role = Role.find_or_create_by(name: "project_owner")
       @user.roles << @role
       @project.owners << @user
