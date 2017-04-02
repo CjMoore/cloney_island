@@ -2,7 +2,7 @@
   <div class="row">
     <div class="card hoverable margin">
       <div class="card-image left">
-        <%= image_tag @registered_user.avatar_url, class: "image-size" %>
+        <%#= image_tag @registered_user.avatar_url, class: "image-size" %>
       </div>
       <div class="card-content">
         <span class="card-title"><%= @registered_user.first_name %> <%= @registered_user.last_name %></span>
@@ -18,4 +18,30 @@
     </div>
   </div>
   <a class="waves-effect waves-light btn color right"> Edit</a>
+</div>
+
+
+<div class="container">
+    <table class="bordered highlight centered owned-projects">
+      <thead>
+        <tr>
+          <th>Project name</th>
+          <th>Time remaining</th>
+          <th>Current total amount funded</th>
+          <th>Total amount needed</th>
+          <th>Total amount I contributed</th>
+          <th>Edit?</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @registered_user.owned_projects.each do |project| %>
+          <tr><%= project.name %> </tr>
+          <tr></tr>
+          <tr></tr>
+          <tr><%= project.total %></tr>
+          <tr></tr>
+          <tr><%= link_to "Edit", project_edit_path(project.slug) %></tr>
+          <% end %>
+      </tbody>
+    </table>
 </div>

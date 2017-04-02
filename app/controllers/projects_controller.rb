@@ -19,13 +19,24 @@ class ProjectsController < ApplicationController
       role = Role.find_or_create_by(name: "project_owner")
       @user.roles << role
       @project.owners << @user
-      # @collaborator = User.find_or_create_by!(email: params[:contributor_email])
-      # @project.owners << @collaborator
       flash[:notice] = "Your project has been created!"
       redirect_to username_path(@user.username)
     else
       flash[:warning] = "Please try again."
       render :new
+    end
+  end
+
+  def edit
+    @project = Project.find_by_slug(params[:id])
+  end
+
+  def update
+    project = Project.find_by_slug(params[:project_id])
+    if project.update(project_params)
+      redirect_to project_path(project.slug)
+    else
+      render :edit
     end
   end
 
