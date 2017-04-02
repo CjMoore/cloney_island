@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_many :roles, through: :user_roles
 
   before_validation :generate_slug
+  # before_update :generate_slug
 
   def registered_user?
     roles.exists?(name: "registered_user")
