@@ -34,7 +34,12 @@ class UsersController < ApplicationController
   end
 
   def update_password
-    TwilioService.new(@user).send_message
+    unless @user.phone.chars.include?("-")
+      TwilioService.new(@user).send_message
+    else
+      flash[:notice] = "invalid phone number"
+      redirect_to "/#{@user.slug}"
+    end
   end
 
   private

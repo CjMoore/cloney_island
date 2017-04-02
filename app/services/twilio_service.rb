@@ -17,5 +17,4 @@ class TwilioService
             body: @user.token
         )
   end
-
 end
