@@ -18,7 +18,7 @@ describe "when user is logged in" do
     expect(page).to have_content("Username")
     expect(page).to have_content("Email")
     expect(page).to have_content("Phone")
-    expect(page).to have_content("New password")
+    expect(page).to have_content("Password")
     expect(page).to have_button("Update Account")
   end
 
@@ -39,6 +39,7 @@ describe "when user is logged in" do
     fill_in "user[avatar_url]", with: "http://www.velvetgeek.com/wp-content/themes/gallerific/image.php?width=570&image=http://www.velvetgeek.com/wp-content/uploads/2016/01/Dude.jpg"
     fill_in "user[email]", with: "dude@dude.com"
     fill_in "user[phone]", with: "555-555-5555"
+    fill_in "user[password]", with: "password"
 
     click_on("Update Account")
 

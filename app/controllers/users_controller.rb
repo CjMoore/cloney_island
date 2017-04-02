@@ -26,13 +26,13 @@ class UsersController < ApplicationController
 
   def update
     @user = current_user
-    if params[:user][:new_password]
-
-    else
-      @user.update_attributes(user_params)
-      @user.save
+    @user.update_attributes(user_params)
+    if @user.save
       flash[:notice] = "Account info updated"
       redirect_to "/#{@user.slug}"
+    else
+      flash[:danger] = "invalid input"
+      render :edit
     end
   end
 
