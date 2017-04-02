@@ -25,17 +25,20 @@
     </div>
     <div class="card col s6 status-card">
       <div class="status-bar">
-        <div class="status-color" style="width:50%">
+        <div class="status-color" style="width:<%= percent_funded(@current_project.total, @current_project.total_funds) %>%">
           <p id="status-size"></p>
         </div>
       </div>
       <div class="card" id="total-card">
         <h6 class="center" id="proj-total">Total Needed: <%= number_to_currency(@current_project.total, precision: 2) %><h6>
-        </div>
-        <div class="card left" id="date-card">
-          <h6 class="center"><%= format_date(@current_project.time) %></h6>
-        </div>
       </div>
+      <div class="card left" id="date-card">
+        <h6 class="center"><%= format_date(@current_project.time) %></h6>
+      </div>
+      <div class="class card" id="total-funded">
+        <h6 class="center">Total Funded:<%= number_to_currency(@current_project.total_funds, precision: 2) %></h6>
+      </div>
+    </div>
     </div>
   <div class="card-action">
     <% if current_user %>
