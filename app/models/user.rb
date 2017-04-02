@@ -9,6 +9,9 @@ class User < ApplicationRecord
   has_many :user_roles
   has_many :roles, through: :user_roles
 
+  has_many :user_owned_projects
+  has_many :owned_projects, through: :user_owned_projects, source: :project
+
   before_validation :generate_slug
   # before_update :generate_slug
 
