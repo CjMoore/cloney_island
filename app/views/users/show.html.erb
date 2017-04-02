@@ -15,4 +15,5 @@
     </div>
   </div>
   <%= link_to "Edit", username_edit_path(slug: @registered_user.slug), class: "btn btn-color right" %>
+  <%= link_to "Update Password", username_update_password_path(@registered_user.slug), class: "btn btn-color" %>
 </div>

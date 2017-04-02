@@ -25,15 +25,36 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = current_user
-    @user.update_attributes(user_params)
-    if @user.save
-      flash[:notice] = "Account info updated"
-      redirect_to "/#{@user.slug}"
+    if params[:commit] == "Update Password"
+      @user = current_user
+      if @user && @user.authenticate(params[:user][:password])
+        byebug
+        TwilioService.new(@user).send_message
+        if params[:token] == @user.token
+          @user.update_attribute(:password, params[:new_password])
+          redirect_to "/#{@user.slug}"
+        else
+          flash[:danger] = "invalid input"
+          render :update_password
+        end
+      else
+        flash[:danger] = "invalid input"
+        render :update_password
+      end
     else
-      flash[:danger] = "invalid input"
-      render :edit
+      @user = current_user
+      @user.update_attributes(user_params)
+      if @user.save
+        flash[:notice] = "Account info updated"
+        redirect_to "/#{@user.slug}"
+      else
+        flash[:danger] = "invalid input"
+        render :edit
+      end
     end
+  end
+
+  def update_password
   end
 
   private
