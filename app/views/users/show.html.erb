@@ -35,12 +35,14 @@
       </thead>
       <tbody>
         <% @registered_user.owned_projects.each do |project| %>
-          <tr><%= project.name %> </tr>
-          <tr></tr>
-          <tr></tr>
-          <tr><%= project.total %></tr>
-          <tr></tr>
-          <tr><%= link_to "Edit", project_edit_path(project.slug) %></tr>
+        <tr>
+          <td><%= project.name %> </td>
+          <td></td>
+          <td></td>
+          <td><%= project.total %></td>
+          <td></td>
+          <td><%= link_to "Edit", project_edit_path(project.slug) %></td>
+        </tr>
           <% end %>
       </tbody>
     </table>
