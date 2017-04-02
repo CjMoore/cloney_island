@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe "a registered user in the create project page" do
-  it "they can create project and gain project owner role" do
+  it "can create project, gain project owner role and add a contributor" do
 
     user = create(:user)
     contributor = create(:user, username: "geegee", email: "edilene-cruz@hotmail.com")
