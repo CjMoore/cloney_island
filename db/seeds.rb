@@ -21,7 +21,7 @@ class Seed
       name: Faker::Hipster.words.join(" "),
       description: Faker::Hipster.sentence(3),
       total: Faker::Number.between(1000, 20000),
-      time: Faker::Time.forward(Random.new.rand(3..30), :morning),
+      time: Faker::Time.forward(Random.new.rand(10..30), :morning),
       image_url: "http://www.fillmurray.com/g/200/200"
       )
       puts "Project Name: #{project.name} #{i}"

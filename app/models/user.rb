@@ -27,6 +27,10 @@ class User < ApplicationRecord
     roles.exists?(name: "project_owner")
   end
 
+  def my_total_amount_funded(project)
+    user_funded_projects.where(project_id: project.id).sum(:amount)
+  end
+
 
 private
 
