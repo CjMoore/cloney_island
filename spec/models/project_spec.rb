@@ -20,7 +20,7 @@ RSpec.describe Project, type: :model do
                             )
       expect(project).to be_invalid
     end
-    xit "should be invalid without time" do
+    it "should be invalid without time" do
       project = Project.new(name: "a",
                             description: "b",
                             total: 1
