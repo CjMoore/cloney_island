@@ -37,7 +37,7 @@ class UsersController < ApplicationController
     unless @user.phone.chars.include?("-")
       TwilioService.new(@user).send_message
     else
-      flash[:notice] = "invalid phone number"
+      flash[:notice] = "Invalid phone number"
       redirect_to "/#{@user.slug}"
     end
   end
@@ -50,7 +50,7 @@ class UsersController < ApplicationController
       flash[:notice] = "Account info updated"
       redirect_to "/#{@user.slug}"
     else
-      flash[:danger] = "invalid input"
+      flash[:danger] = "Invalid Input"
       render :edit
     end
   end
@@ -59,7 +59,7 @@ class UsersController < ApplicationController
     if @user && @user.authenticate(params[:user][:password])
       check_token
     else
-      flash[:danger] = "invalid input"
+      flash[:danger] = "Invalid Input"
       render :update_password
     end
   end
@@ -69,7 +69,7 @@ class UsersController < ApplicationController
       @user.update_attribute(:password, params[:new_password])
       redirect_to "/#{@user.slug}"
     else
-      flash[:danger] = "invalid token"
+      flash[:danger] = "Invalid Token"
       render :update_password
     end
   end
