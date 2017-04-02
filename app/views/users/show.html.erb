@@ -2,7 +2,7 @@
   <div class="row">
     <div class="card hoverable margin">
       <div class="card-image left">
-        <%#= image_tag @registered_user.avatar_url, class: "image-size" %>
+        <%= image_tag @registered_user.avatar_url, class: "image-size" %>
       </div>
       <div class="card-content">
         <span class="card-title"><%= @registered_user.first_name %> <%= @registered_user.last_name %></span>
@@ -16,11 +16,39 @@
   </div>
   <%= link_to "Edit", username_edit_path(slug: @registered_user.slug), class: "btn btn-color right" %>
   <%= link_to "Update Password", username_update_password_path(@registered_user.slug), class: "btn btn-color" %>
+  <% if @registered_user.project_funder? %>
+  <table>
+    <h4>Projects I've Funded</h4>
+    <thead>
+      <tr>
+        <th>Project Name</th>
+        <th>Remaining Time</th>
+        <th>Total Amount Funded</th>
+        <th>Total Needed</th>
+        <th>Amount I've Funded</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <% @registered_user.funded_projects.each do |project| %>
+        <td><a href="/projects/<%= project.slug %>"> <%= project.name %></a></td>
+        <td><%= format_date(project.time) %></td>
+        <td><%= number_to_currency(project.total_funds, precision: 2) %></td>
+        <td><%= number_to_currency(project.total, precision: 2) %></td>
+        <td><%= number_to_currency(@registered_user.my_total_amount_funded(project), precision: 2) %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <% end %>
 </div>
 
-
+<br>
+<br>
 <div class="container">
-    <table class="bordered highlight centered owned-projects">
+<h4>Projects I've Created</h4>
+    <table class="owned-projects">
       <thead>
         <tr>
           <th>Project name</th>
