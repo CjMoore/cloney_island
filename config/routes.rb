@@ -12,6 +12,9 @@ Rails.application.routes.draw do
   post     '/login',    to: 'sessions#create'
   delete   '/logout',   to: 'sessions#destroy'
   post     '/signup',   to: 'users#create'
+  get      '/username/edit', path: ':username/edit', to: 'users#edit'
   get      '/username', path: ':username',  to: 'users#show'
+  patch    '/username/update', path: ':username', to: 'users#update'
+  get      '/username/update_password', path: ':username/update_password', to: "users#update_password"
 
 end

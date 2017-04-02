@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_many :roles, through: :user_roles
 
   before_validation :generate_slug
+  # before_update :generate_slug
 
   def registered_user?
     roles.exists?(name: "registered_user")
@@ -21,6 +22,10 @@ class User < ApplicationRecord
 
   def project_owner?
     roles.exists?(name: "project_owner")
+  end
+
+  def my_total_amount_funded(project)
+    user_funded_projects.where(project_id: project.id).sum(:amount)
   end
 
 
