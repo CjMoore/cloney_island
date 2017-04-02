@@ -16,7 +16,7 @@ describe "Registered User/Project Funder" do
     expect(page).to have_content("Project Name")
     expect(page).to have_content("Remaining Time")
     expect(page).to have_content("Total Amount Funded")
-    expect(page).to have_content("Total Needed")
+    expect(page).to have_content("Total Amount Needed")
     expect(page).to have_content("Amount I've Funded")
     expect(page).to have_content(user.funded_projects.name)
     expect(page).to have_content(user.funded_projects.first.total)
