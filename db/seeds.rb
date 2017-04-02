@@ -12,6 +12,7 @@ class Seed
     seed.generate_users
     seed.generate_comments
     seed.generate_funds
+    seed.generate_me
   end
 
   def generate_projects
@@ -81,6 +82,19 @@ class Seed
 
       puts "#{user.username} funded #{project.name}"
     end
+  end
+
+  def generate_me
+    user = User.create!(first_name: "Charlotte",
+                last_name: "Moore",
+                username: "itsame",
+                email: "mooc123@gmail.com",
+                phone: "2025313141",
+                avatar_url: "http://www.placecage.com/c/200/200",
+                password: "pass",
+                token: "abc123")
+    user.roles << Role.find_by(name: "registered_user")
+    puts "created me"
   end
 end
 
