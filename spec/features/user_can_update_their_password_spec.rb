@@ -1,7 +1,7 @@
 require "rails_helper"
 
 describe "when user wants to update their password" do
-  it "they have to provide an auth code sent by sms" do
+  xit "they have to provide an auth code sent by sms" do
     user = create(:user, phone: "2025313141")
     role = create(:role)
     user.roles << role
