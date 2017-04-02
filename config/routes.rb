@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root "home#index"
 
-  resources :projects, only: [:show, :index, :new, :create, :update] do
+  resources :projects, only: [:show, :index, :new, :update] do
     resources :comments, only: [:create]
     resources :user_funded_projects, only: [:create]
     resources :user_owned_projects, only: [:create]

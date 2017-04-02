@@ -15,9 +15,9 @@ class ProjectsController < ApplicationController
   def create
     @user = current_user
     @project = Project.new(project_params)
+    days = params[:time][:month].to_i
+    @project.update_attribute(:time, (Time.now.to_date + days) )
     if @project.save
-      days = params[:time][:month].to_i
-      @project.update_attribute(:time, (Time.now.to_date + days) )
       @role = Role.find_or_create_by(name: "project_owner")
       @user.roles << @role
       @project.owners << @user
@@ -30,7 +30,7 @@ class ProjectsController < ApplicationController
           flash.now[:warning] = "This email doesn't exist in our database and we cannot add them as a project owner."
         end
       flash[:notice] = "Your project has been created!"
-      redirect_to username_path(@user.username)
+      redirect_to username_path(@user.slug)
     else
       flash[:warning] = "Please try again."
       render :new

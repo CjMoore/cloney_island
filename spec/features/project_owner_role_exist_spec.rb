@@ -30,7 +30,7 @@ describe "a registered user in the create project page" do
 
     click_on "Create Project"
 
-    expect(current_path).to eq(username_path(user.username))
+    expect(current_path).to eq(username_path(user.slug))
     expect(user.roles.count).to eq(2)
     expect(user.roles.first.name).to eq("registered_user")
     expect(user.roles.last.name).to eq("project_owner")
