@@ -18,4 +18,27 @@
     </div>
   </div>
   <a class="waves-effect waves-light btn color right"> Edit</a>
+  <table>
+    <thead>
+      <tr>
+        <th>Project Name</th>
+        <th>Remaining Time</th>
+        <th>Total Amount Funded</th>
+        <th>Total Needed</th>
+        <th>Amount I've Funded</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <% @registered_user.projects_funded.each do |project| %>
+        <td><%= project.name %></td>
+        <td><%= project.remaining_time %></td>
+        <td><%= project.total_amount_funded %></td>
+        <td><%= project.total_amount_needed %></td>
+        <td><%= project.my_total_amount_funded %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>

@@ -18,6 +18,7 @@ class UsersController < ApplicationController
 
   def show
     @registered_user ||= User.find_by_slug(params[:username])
+    binding.pry
   end
 
   private
