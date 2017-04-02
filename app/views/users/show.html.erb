@@ -18,6 +18,7 @@
   <%= link_to "Update Password", username_update_password_path(@registered_user.slug), class: "btn btn-color" %>
   <% if @registered_user.project_funder? %>
   <table>
+    <h4>Projects I've Funded</h4>
     <thead>
       <tr>
         <th>Project Name</th>
@@ -43,9 +44,11 @@
   <% end %>
 </div>
 
-
+<br>
+<br>
 <div class="container">
-    <table class="bordered highlight centered owned-projects">
+<h4>Projects I've Created</h4>
+    <table class="owned-projects">
       <thead>
         <tr>
           <th>Project name</th>
