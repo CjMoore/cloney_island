@@ -16,9 +16,18 @@ class ProjectsController < ApplicationController
     @user = current_user
     @project = Project.new(project_params)
     if @project.save
-      role = Role.find_or_create_by(name: "project_owner")
-      @user.roles << role
+      @role = Role.find_or_create_by(name: "project_owner")
+      @user.roles << @role
       @project.owners << @user
+      @contributor = User.find_by(email: params[:contributor_email])
+        if !@contributor.nil?
+          @contributor.roles << @role
+          @project.owners << @contributor
+          flash[:notice] = "You just added a new project owner."
+        else
+          flash[:warning] = "This email doesn't exist in our database and we cannot add them as a project owner."
+        end
+
       flash[:notice] = "Your project has been created!"
       redirect_to username_path(@user.username)
     else

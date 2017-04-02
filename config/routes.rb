@@ -20,5 +20,6 @@ Rails.application.routes.draw do
   delete   '/logout',   to: 'sessions#destroy'
   post     '/signup',   to: 'users#create'
   get      '/username', path: ':username',  to: 'users#show'
+  post     '/notification', to: 'notification#create'
 
 end

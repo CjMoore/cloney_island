@@ -3,9 +3,11 @@ require 'rails_helper'
 describe "a registered user in the create project page" do
   it "they can create project and gain project owner role" do
 
-    user= create(:user)
+    user = create(:user)
+    contributor = create(:user, username: "geegee", email: "edilene-cruz@hotmail.com")
     registered_role = create(:role)
     user.roles << registered_role
+    contributor.roles << registered_role
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
@@ -16,7 +18,7 @@ describe "a registered user in the create project page" do
     fill_in "project[description]", with: "Cute pup"
     select "3 Months", from: "time[month]"
     fill_in "project[total]", with: "5000"
-    fill_in "contributor_email", with: "edilene@example.com"
+    fill_in "contributor_email", with: "edilene-cruz@hotmail.com"
 
     expect(page).to have_content("Title")
     expect(page).to have_content("Image url")
@@ -32,5 +34,8 @@ describe "a registered user in the create project page" do
     expect(user.roles.count).to eq(2)
     expect(user.roles.first.name).to eq("registered_user")
     expect(user.roles.last.name).to eq("project_owner")
+    expect(contributor.roles.count).to eq(2)
+    expect(contributor.roles.first.name).to eq("registered_user")
+    expect(contributor.roles.last.name).to eq("project_owner")
   end
 end
