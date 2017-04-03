@@ -22,14 +22,4 @@ class Project < ApplicationRecord
     user_funded_projects.sum(:amount)
   end
 
-  def change_status
-    if status.eql?("default")
-      "disabled"
-    else
-      status.eql?("disabled")
-      "default"
-    end
-  end
-
-
 end
