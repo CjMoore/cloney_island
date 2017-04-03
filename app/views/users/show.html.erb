@@ -17,8 +17,9 @@
   <%= link_to "Edit", username_edit_path(slug: @registered_user.slug), class: "btn btn-color right" %>
   <%= link_to "Update Password", username_update_password_path(@registered_user.slug), class: "btn btn-color" %>
   <% if @registered_user.project_funder? %>
-  <table>
-    <h4 class="center">Projects I've Funded</h4>
+  <div class="card table-card">
+  <table class="bordered highlight">
+    <h4 class="center card-title black-text">Projects I've Funded</h4>
     <thead>
       <tr>
         <th class="center">Project Name</th>
@@ -43,13 +44,15 @@
   </table>
   <% end %>
 </div>
+</div>
 
 <br>
 <br>
   <% if @registered_user.project_owner? %>
 <div class="container">
-<h4 class="center">Projects I own</h4>
-    <table class="owned-projects">
+  <div class="card table-card">
+    <h4 class="card-title black-text center">Projects I Own</h4>
+    <table class="owned-projects bordered highlight">
       <thead>
         <tr>
           <th class="center">Project Name</th>
@@ -70,14 +73,15 @@
           <td class="center"></td>
 
           <td class="center"><%= link_to "Edit", project_edit_path(project.slug), class: "btn btn-color", id:"project-edit" %></td>
-          <% if project.status == "active" %>
-          <td class="center"><%= link_to "Disable", projects, class: "btn btn-color", id:"project-disable" %></td>
-          <% elsif project.status == "disabled" %>
-          <td class="center"><%= link_to "Activate", project.change_status, class: "btn btn-color", id:"project-activate" %></td>
+          <% if project.active? %>
+          <td class="center"><%= button_to "Disable", project_path(project, {status: "disable"}), method: :put, class: "btn btn-color", id:"" %></td>
+          <% elsif project.disabled? %>
+          <td class="center"><%= button_to "Activate", project_path(project, {status: "active"}), method: :put, class: "btn btn-color", id:"" %></td>
           <% end %>
         </tr>
-          <% end %>
+        <% end %>
       </tbody>
     </table>
     <% end %>
+  </div>
 </div>

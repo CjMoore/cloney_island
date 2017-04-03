@@ -15,6 +15,11 @@ module ProjectHelper
   end
 
   def percent_funded(total, funds)
-    ((funds.to_f/total.to_f)*100).round(0)
+    funded = ((funds.to_f/total.to_f)*100).round(0)
+    if funded < 100
+      funded
+    else
+      100
+    end
   end
 end
