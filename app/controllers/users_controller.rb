@@ -60,7 +60,7 @@ class UsersController < ApplicationController
       check_token
     else
       flash[:danger] = "Invalid Input"
-      render :update_password
+      redirect_to "/#{@user.slug}/update_password"
     end
   end
 
@@ -69,8 +69,8 @@ class UsersController < ApplicationController
       @user.update_attribute(:password, params[:new_password])
       redirect_to "/#{@user.slug}"
     else
-      flash[:danger] = "Invalid Token"
-      render :update_password
+      flash[:danger] = "Invalid Token password unchanged"
+      redirect_to "/#{@user.slug}/update_password"
     end
   end
 
