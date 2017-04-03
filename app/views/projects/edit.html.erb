@@ -6,7 +6,7 @@
         <div class="card-content">
           <span class="card-title black-text">Edit this Project</span>
           <div class="login-form">
-            <%= form_for :project do |f| %>
+            <%= form_for @project do |f| %>
             <%= f.label "Title" %>
             <%= f.text_field :name %>
             <%= f.label "Image URL" %>

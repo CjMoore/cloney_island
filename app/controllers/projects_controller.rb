@@ -38,15 +38,17 @@ class ProjectsController < ApplicationController
   end
 
   def edit
-    @project = Project.find_by_slug(params[:id])
+    @project = Project.find_by_slug(params[:project_id])
   end
 
   def update
-    project = Project.find_by_slug(params[:project_id])
-    if project.update(project_params)
-      redirect_to project_path(project.slug)
+    @project = current_user.owned_projects.find(params[:id])
+    if @project.update(project_params)
+      redirect_to project_path(@project.slug)
+      flash[:notice] = "You have successfully updated your project"
     else
       render :edit
+      flash[:danger] = "Invalid input"
     end
   end
 
