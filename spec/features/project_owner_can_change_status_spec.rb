@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe "Project Owner" do
-  it "can change status of project from " do
+  it "can change status of project" do
     user = create(:user)
     user.roles << Role.create!(name: "project_owner")
     project = create(:project, status: 'active')
