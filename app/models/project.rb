@@ -12,6 +12,8 @@ class Project < ApplicationRecord
 
   before_validation :generate_slug
 
+  enum ({status: [:active, :disabled]})
+
   def generate_slug
     self.slug = name.parameterize
   end
@@ -19,6 +21,5 @@ class Project < ApplicationRecord
   def total_funds
     user_funded_projects.sum(:amount)
   end
-
 
 end
