@@ -11,7 +11,6 @@ class UserFundedProjectsController < ApplicationController
     fund = @user.user_funded_projects.create(project_params)
     @role = Role.find_or_create_by(name: "project_funder")
     @user.roles << @role
-    @project.funders << @user
     flash.now[:notice] = "You just funded #{@project.name} for #{fund.amount}!"
     redirect_to project_path(@project.slug)
   end
