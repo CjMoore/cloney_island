@@ -18,25 +18,25 @@
   <%= link_to "Update Password", username_update_password_path(@registered_user.slug), class: "btn btn-color" %>
   <% if @registered_user.project_funder? %>
   <table>
-    <h4>Projects I've Funded</h4>
+    <h4 class="center">Projects I've Funded</h4>
     <thead>
       <tr>
-        <th>Project Name</th>
-        <th>Remaining Time</th>
-        <th>Total Amount Funded</th>
-        <th>Total Amount Needed</th>
-        <th>Amount I've Funded</th>
+        <th class="center">Project Name</th>
+        <th class="center">Remaining Time</th>
+        <th class="center">Total Amount Funded</th>
+        <th class="center">Total Amount Needed</th>
+        <th class="center">Amount I've Funded</th>
       </tr>
     </thead>
 
     <tbody>
       <tr>
         <% @registered_user.funded_projects.each do |project| %>
-        <td><a href="/projects/<%= project.slug %>"> <%= project.name %></a></td>
-        <td><%= format_date(project.time) %></td>
-        <td><%= number_to_currency(project.total_funds, precision: 2) %></td>
-        <td><%= number_to_currency(project.total, precision: 2) %></td>
-        <td><%= number_to_currency(@registered_user.my_total_amount_funded(project), precision: 2) %></td>
+        <td class="center"><a href="/projects/<%= project.slug %>"> <%= project.name %></a></td>
+        <td class="center"><%= format_date(project.time) %></td>
+        <td class="center"><%= number_to_currency(project.total_funds, precision: 2) %></td>
+        <td class="center"><%= number_to_currency(project.total, precision: 2) %></td>
+        <td class="center"><%= number_to_currency(@registered_user.my_total_amount_funded(project), precision: 2) %></td>
       </tr>
       <% end %>
     </tbody>
@@ -46,30 +46,33 @@
 
 <br>
 <br>
+  <% if @registered_user.project_owner? %>
 <div class="container">
-<h4>Projects I've Created</h4>
+<h4 class="center">Projects I own</h4>
     <table class="owned-projects">
       <thead>
         <tr>
-          <th>Project Name</th>
-          <th>Remaining Time</th>
-          <th>Total Amount Funded</th>
-          <th>Total Amount Needed</th>
-          <th>Amount I've Funded</th>
-          <th>Edit?</th>
+          <th class="center">Project Name</th>
+          <th class="center">Remaining Time</th>
+          <th class="center">Total Amount Funded</th>
+          <th class="center">Total Amount Needed</th>
+          <th class="center"></th>
+          <th class="center"></th>
         </tr>
       </thead>
       <tbody>
         <% @registered_user.owned_projects.each do |project| %>
         <tr>
-          <td><%= project.name %> </td>
-          <td></td>
-          <td></td>
-          <td><%= project.total %></td>
-          <td></td>
-          <td><%= link_to "Edit", project_edit_path(project.slug) %></td>
+          <td class="center"><a href="/projects/<%= project.slug %>"><%= project.name %></a></td>
+          <td class="center"><%= format_date(project.time)%></td>
+          <td class="center"><%= number_to_currency(project.total_funds, precision: 2) %></td>
+          <td class="center"><%= number_to_currency(project.total, precision: 2) %></td>
+          <td class="center"></td>
+          <td class="center"><%= link_to "Edit", project_edit_path(project.slug), class: "btn btn-color", id:"project-edit" %></td>
+          <td class="center"><%= link_to "Disable", project_edit_path(project.slug), class: "btn btn-color", id:"" %></td>
         </tr>
           <% end %>
       </tbody>
     </table>
+    <% end %>
 </div>
