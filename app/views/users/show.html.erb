@@ -17,8 +17,12 @@
   <%= link_to "Edit", username_edit_path(slug: @registered_user.slug), class: "btn btn-color right" %>
   <%= link_to "Update Password", username_update_password_path(@registered_user.slug), class: "btn btn-color" %>
   <% if @registered_user.project_funder? %>
+  <div class="card form-card">
+
+
+
   <table>
-    <h4 class="center">Projects I've Funded</h4>
+    <h4 class="center card-title black-text">Projects I've Funded</h4>
     <thead>
       <tr>
         <th class="center">Project Name</th>
@@ -43,13 +47,15 @@
   </table>
   <% end %>
 </div>
+</div>
 
 <br>
 <br>
   <% if @registered_user.project_owner? %>
 <div class="container">
-<h4 class="center">Projects I own</h4>
-    <table class="owned-projects">
+  <div class="card form-card">
+    <h4 class="card-title black-text center">Projects I own</h4>
+    <table class="owned-projects bordered highlight">
       <thead>
         <tr>
           <th class="center">Project Name</th>
@@ -69,10 +75,11 @@
           <td class="center"><%= number_to_currency(project.total, precision: 2) %></td>
           <td class="center"></td>
           <td class="center"><%= link_to "Edit", project_edit_path(project.slug), class: "btn btn-color", id:"project-edit" %></td>
-          <td class="center"><%= link_to "Disable", project_edit_path(project.slug), class: "btn btn-color", id:"" %></td>
+          <td class="center"><%= link_to "Disable", "#", class: "btn btn-color", id:"" %></td>
         </tr>
-          <% end %>
+        <% end %>
       </tbody>
     </table>
     <% end %>
+  </div>
 </div>
