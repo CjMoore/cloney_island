@@ -47,9 +47,11 @@
   <div class="card-action">
     <% if current_user %>
       <%= link_to "Fund", project_funds_path(@current_project), class: "btn right btn-color" %>
+      Total I have funded thus far: <%=  number_to_currency(current_user.my_total_amount_funded(@current_project), precision: 2) %>
     <% else %>
       <%= link_to "Register/Sign in to fund", login_path, class: "btn right btn-color" %>
     <% end %>
+
   </div>
 
   <div class="row">

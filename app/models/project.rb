@@ -19,4 +19,6 @@ class Project < ApplicationRecord
   def total_funds
     user_funded_projects.sum(:amount)
   end
+
+
 end
