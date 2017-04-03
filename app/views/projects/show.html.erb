@@ -33,21 +33,28 @@
           <p id="status-size"></p>
         </div>
       </div>
-      <div class="card" id="total-card">
-        <h6 class="center" id="proj-total">Total Needed: <%= number_to_currency(@current_project.total, precision: 2) %><h6>
+      <div class="row">
+        <div class="col s1 card" id="total-card">
+          <h6 class="center" id="proj-total">Total Needed: <%= number_to_currency(@current_project.total, precision: 2) %><h6>
+          </div>
+          <div class="col s1 card" id="date-card">
+            <h6 class="center"><%= format_date(@current_project.time) %> time remaining to fund!</h6>
+          </div>
       </div>
-      <div class="card left" id="date-card">
-        <h6 class="center"><%= format_date(@current_project.time) %> time remaining to fund!</h6>
-      </div>
-      <div class="class card" id="total-funded">
-        <h6 class="center">Total Funded:<%= number_to_currency(@current_project.total_funds, precision: 2) %></h6>
+      <div class="row">
+        <div class="col s1 class card" id="total-funded">
+          <h6 class="center">Total Funded:<%= number_to_currency(@current_project.total_funds, precision: 2) %></h6>
+        </div>
+        <div class="col s1 class card" id="my-funded">
+          <h6 class="center">I have Funded:<%= number_to_currency(current_user.my_total_amount_funded(@current_project), precision: 2) %>
+          </h6></div>
       </div>
     </div>
     </div>
   <div class="card-action">
     <% if current_user %>
       <%= link_to "Fund", project_funds_path(@current_project), class: "btn right btn-color" %>
-      Total I have funded thus far: <%=  number_to_currency(current_user.my_total_amount_funded(@current_project), precision: 2) %>
+      <div class="class card" id="total-funded">
     <% else %>
       <%= link_to "Register/Sign in to fund", login_path, class: "btn right btn-color" %>
     <% end %>
