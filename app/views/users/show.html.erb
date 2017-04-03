@@ -68,8 +68,13 @@
           <td class="center"><%= number_to_currency(project.total_funds, precision: 2) %></td>
           <td class="center"><%= number_to_currency(project.total, precision: 2) %></td>
           <td class="center"></td>
+
           <td class="center"><%= link_to "Edit", project_edit_path(project.slug), class: "btn btn-color", id:"project-edit" %></td>
-          <td class="center"><%= link_to "Disable", project_edit_path(project.slug), class: "btn btn-color", id:"" %></td>
+          <% if project.status == "active" %>
+          <td class="center"><%= link_to "Disable", projects, class: "btn btn-color", id:"project-disable" %></td>
+          <% elsif project.status == "disabled" %>
+          <td class="center"><%= link_to "Activate", project.change_status, class: "btn btn-color", id:"project-activate" %></td>
+          <% end %>
         </tr>
           <% end %>
       </tbody>

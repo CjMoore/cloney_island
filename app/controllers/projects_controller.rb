@@ -43,8 +43,11 @@ class ProjectsController < ApplicationController
 
   def update
     project = Project.find_by_slug(params[:project_id])
-    if project.update(project_params)
+    if project.update(project_params).exclude?(:status)
       redirect_to project_path(project.slug)
+    elsif project.update(project_params).include?(:status)
+      project.
+      redirect_to username_path(@user.slug)
     else
       render :edit
     end
@@ -53,6 +56,6 @@ class ProjectsController < ApplicationController
   private
 
   def project_params
-    params.require(:project).permit(:name, :description, :image_url, :total, :slug)
+    params.require(:project).permit(:name, :description, :image_url, :total, :slug, :status)
   end
 end

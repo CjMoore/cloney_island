@@ -31,9 +31,9 @@ ActiveRecord::Schema.define(version: 20170403175318) do
     t.datetime "time"
     t.string   "image_url"
     t.string   "slug"
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
-    t.string   "status",      default: "active"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.integer  "status",      default: 0
   end
 
   create_table "roles", force: :cascade do |t|
