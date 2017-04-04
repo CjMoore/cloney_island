@@ -5,6 +5,7 @@ describe "a registered user in the project page" do
 
     user = create(:user)
     registered_role = create(:role)
+    binding.pry
     user.roles << registered_role
     project = create(:project)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
