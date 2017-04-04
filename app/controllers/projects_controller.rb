@@ -42,6 +42,7 @@ class ProjectsController < ApplicationController
   end
 
   def update
+    @user = current_user
     @project = current_user.owned_projects.find(params[:id])
     unless params.include?("status")
       project_update
