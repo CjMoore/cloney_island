@@ -14,17 +14,13 @@
 </div>
 
 <div class="container">
-
   <div class="row">
     <div class="card col s5">
       <div class="card-image">
         <%= image_tag @current_project.image_url %>
       </div>
     </div>
-    <div class="col s1">
-      <p>
-
-      </p>
+    <div class="col s1"><p></p>
     </div>
     <div class="card col s6 status-card">
       <div class="status-bar">
@@ -39,6 +35,9 @@
           </div>
           <div class="col s1 card" id="date-card">
             <h6 class="center"><%= format_date(@current_project.time) %> time remaining to fund!</h6>
+          </div>
+          <div class="card col s1" id="percent-card">
+            <p class="center"><%=percent_funded(@current_project.total, @current_project.total_funds) %>%</p>
           </div>
         </div>
         <div class="row">

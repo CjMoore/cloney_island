@@ -134,4 +134,30 @@ describe "when user wants to update their password" do
 
     expect(current_path).to eq("/#{user.slug}/update_password")
   end
+
+  it "a user without a token cannot update their password" do
+    user = create(:user, phone: "2025313141")
+    role = create(:role)
+    user.roles << role
+
+    visit root_path
+
+    within(".nav-wrapper") do
+      click_on("Login")
+    end
+
+    expect(current_path).to eq(login_path)
+
+    fill_in "session[username]", with: "#{user.username}"
+    fill_in "session[password]", with: "password"
+    within(".login-form") do
+      click_on("Login")
+    end
+
+    visit "/#{user.slug}"
+
+    click_on("Update Password")
+
+    expect(page).to have_content("I'm sorry, I can't let you do that")
+  end
 end
