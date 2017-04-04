@@ -1,0 +1,35 @@
+
+
+<div class="container">
+  <table class="users-table striped table-card">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Username</th>
+        <th>Roles</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td class="avatar"><img src="<%= user.avatar_url %>" class="circle index-avatar"></td>
+          <td><%= user.username %></td>
+          <td>
+            <ul>
+              <% user.roles.each do |role| %>
+                <li><%= format_roles(role.name) %></li>
+              <% end %>
+            </ul>
+          </td>
+          <td><%= button_to "Deactivate", "#", class: "btn btn-color" %></td>
+          <td><%= button_to "Make Admin", "#", class: "btn btn-color" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <ul class="paginate">
+    <li class="active"><%= will_paginate @users %></li>
+  </ul>
+</div>
