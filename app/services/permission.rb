@@ -66,7 +66,7 @@ class Permission
   def admin_user_permissions
     return true if controller == "home"
     return true if controller == "sessions" && action.in?(["destroy"])
-    return true if controller == "users" && action.in?(["show", "index"])
+    return true if controller == "users" && action.in?(["show", "index", "update"])
     return true if controller == "projects" && action.in?(["index", "show", "new", "create"])
     return true if controller == "comments" && action.in?(["create"])
     return true if controller == "user_funded_projects" && action.in?(["new", "create"])

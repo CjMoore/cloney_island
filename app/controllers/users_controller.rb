@@ -33,6 +33,10 @@ class UsersController < ApplicationController
     @user = current_user
     if params[:commit] == "Update Password"
       change_password
+    elsif params[:update] == "make_admin"
+      user_to_update = User.find_by_slug(params[:username])
+      user_to_update.roles << Role.find_or_create_by(name: "admin_user")
+      redirect_to users_path
     else
       update_user
     end
