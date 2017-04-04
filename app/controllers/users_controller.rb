@@ -33,6 +33,8 @@ class UsersController < ApplicationController
     @user = current_user
     if params[:commit] == "Update Password"
       change_password
+    elsif params[:update] == "admin"
+      update_admin
     else
       update_user
     end
@@ -48,6 +50,18 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def update_admin
+    if params[:revoke] == "admin"
+      user_to_update = User.find_by_slug(params[:username])
+      user_to_update.roles.delete(Role.find_by(name: "admin_user"))
+      redirect_to users_path
+    else
+      user_to_update = User.find_by_slug(params[:username])
+      user_to_update.roles << Role.find_or_create_by(name: "admin_user")
+      redirect_to users_path
+    end
+  end
 
   def update_user
     @user.update_attributes(user_params)
