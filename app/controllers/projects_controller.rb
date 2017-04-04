@@ -67,17 +67,52 @@ class ProjectsController < ApplicationController
   end
 
   def edit
-    @project = Project.find_by_slug(params[:id])
+    @project = Project.find_by_slug(params[:project_id])
   end
 
   def update
+    if params[:contributor_email].empty?
+      update_without_contributor
+    else
+      is_contributor_valid_update
+    end
+  end
+
+  def update_without_contributor
     project = Project.find_by_slug(params[:project_id])
     if project.update(project_params)
+      flash[:notice] = "Your project has been updated."
       redirect_to project_path(project.slug)
     else
+      flash[:warning] = "We were unable to update the project. Please try again."
       render :edit
     end
   end
+
+  def is_contributor_valid_update
+    contributor = User.find_by(email: params[:contributor_email])
+     if !contributor.nil?
+       update_project(contributor)
+     else
+       flash[:warning] = "The email doesn't exit in our database. Please remove the email or enter a valid email address."
+       render :edit
+     end
+  end
+
+  def update_project(contributor)
+    @role = Role.find_or_create_by(name: "project_owner")
+    @project = Project.find_by_slug(params[:project_id])
+    if @project.update(project_params)
+      contributor.roles << @role
+      @project.owners << contributor
+      flash[:notice] = "Your project has been updated."
+      redirect_to project_path(@project.slug)
+    else
+      flash[:warning] = "Your project was not updated, please enter a valid collaborator."
+      render :edit
+    end
+  end
+
 
   private
 
