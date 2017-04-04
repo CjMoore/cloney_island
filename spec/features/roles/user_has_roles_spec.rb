@@ -15,6 +15,10 @@ describe "An reg user" do
     click_on("Login")
    end
    expect(reg_user.roles[0].name).to eq("registered_user")
+
+   within(".nav-wrapper") do
+     expect(page).to_not have_content("User Index")
+   end
   end
 
   it "guest cannot see users show page" do
