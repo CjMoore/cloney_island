@@ -22,6 +22,7 @@ describe "as a project owner when creating a project" do
 
     expect(current_path).to eq("/#{@user.slug}")
     expect(page).to have_content("You just created a project without a contributor!")
+    expect(@user.roles.count).to eq(2)
   end
 
   it "can add a collaborator if they already exist in the database" do
