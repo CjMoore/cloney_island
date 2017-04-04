@@ -2,7 +2,7 @@ class Permission
   extend Forwardable
   attr_reader :user, :controller, :action
 
-  def_delegators :user, :registered_user?, :project_funder?, :project_owner?
+  def_delegators :user, :registered_user?, :project_funder?, :project_owner?, :admin_user?
 
 
   def initialize(user)
