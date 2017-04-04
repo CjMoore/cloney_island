@@ -1,0 +1,61 @@
+
+
+<div class="container">
+  <div class="card table-card">
+    <h4 class="center black-text card-title">Users Info</h4>
+    <table class="user-info">
+      <thead>
+        <tr>
+          <td>Number of Users</td>
+          <td>Registered Users</td>
+          <td>Project Owners</td>
+          <td>Project Funders</td>
+          <td>Admins</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= @users.count %></td>
+          <td><%= @user_roles.num_of_registered_users %></td>
+          <td><%= @user_roles.num_of_project_owners %></td>
+          <td><%= @user_roles.num_of_project_funders %></td>
+          <td><%= @user_roles.num_of_admins %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="card table-card">
+    <table class="users-table striped">
+      <h4 class= "card-title black-text center">Users</h4>
+      <thead>
+        <tr>
+          <th></th>
+          <th>Username</th>
+          <th>Roles</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <td class="avatar"><img src="<%= user.avatar_url %>" class="circle index-avatar"></td>
+            <td><%= user.username %></td>
+            <td>
+              <ul>
+                <% user.roles.each do |role| %>
+                  <li><%= format_roles(role.name) %></li>
+                <% end %>
+              </ul>
+            </td>
+            <td><%= button_to "Deactivate", "#", class: "btn btn-color" %></td>
+            <td><%= button_to "Make Admin", "#", class: "btn btn-color" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <ul class="paginate">
+    <li class="active"><%= will_paginate @users %></li>
+  </ul>
+</div>

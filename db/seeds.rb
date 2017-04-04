@@ -14,6 +14,7 @@ class Seed
     seed.generate_users
     seed.generate_funds
     seed.generate_funder_owners
+    seed.generate_admins
     seed.generate_me
     seed.generate_comments
   end
@@ -135,6 +136,23 @@ class Seed
     end
   end
 
+  def generate_admins
+    20.times do |i|
+      user = User.create!(
+      first_name: Faker::Name.first_name,
+      last_name: Faker::Name.last_name,
+      username: Faker::Name.name,
+      password: "password",
+      email: Faker::Internet.email,
+      phone: Faker::PhoneNumber.cell_phone,
+      avatar_url: Faker::Avatar.image
+      )
+      admin = Role.find_or_create_by(name: "admin_user")
+      user.roles << admin << Role.find_by(name: "registered_user")
+      puts "ADMIN: #{user.username} created"
+    end
+  end
+
   def generate_me
     user = User.create!(first_name: "Charlotte",
                 last_name: "Moore",
@@ -145,6 +163,7 @@ class Seed
                 password: "pass",
                 token: "abc123")
     user.roles << Role.find_by(name: "registered_user")
+    user.roles << Role.find_by(name: "admin_user")
     puts "created me"
   end
 end
