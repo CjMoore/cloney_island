@@ -2,7 +2,7 @@ class Permission
   extend Forwardable
   attr_reader :user, :controller, :action
 
-  def_delegators :user, :registered_user?, :project_funder?, :project_owner?
+  def_delegators :user, :registered_user?, :project_funder?, :project_owner?, :admin_user?
 
 
   def initialize(user)
@@ -14,6 +14,8 @@ class Permission
     @action = action
 
     case
+    when user.admin_user?
+      admin_user_permissions
     when user.project_owner?
       project_owner_permissions
     when user.project_funder?
@@ -56,6 +58,15 @@ class Permission
     return true if controller == "home"
     return true if controller == "sessions" && action.in?(["destroy"])
     return true if controller == "users" && action.in?(["show"])
+    return true if controller == "projects" && action.in?(["index", "show", "new", "create"])
+    return true if controller == "comments" && action.in?(["create"])
+    return true if controller == "user_funded_projects" && action.in?(["new", "create"])
+  end
+
+  def admin_user_permissions
+    return true if controller == "home"
+    return true if controller == "sessions" && action.in?(["destroy"])
+    return true if controller == "users" && action.in?(["show", "index"])
     return true if controller == "projects" && action.in?(["index", "show", "new", "create"])
     return true if controller == "comments" && action.in?(["create"])
     return true if controller == "user_funded_projects" && action.in?(["new", "create"])
