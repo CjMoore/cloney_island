@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     get      '/funds',  to: 'user_funded_projects#new'
     get      '/edit', to: 'projects#edit'
     post     '/edit', to: 'projects#update'
+    post '/update', to: 'projects#update_status'
   end
 
 
