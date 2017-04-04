@@ -50,7 +50,9 @@
             </td>
             <td><%= button_to "Deactivate", "#", class: "btn btn-color" %></td>
             <% unless user.admin_user? %>
-              <td><%= button_to "Make Admin", username_update_path(user.slug, {update: "make_admin"}), class: "btn btn-color", method: :patch %></td>
+              <td><%= button_to "Make Admin", username_update_path(user.slug, {update: "admin"}), class: "btn btn-color", method: :patch %></td>
+            <% else %>
+              <td> <%= button_to "Revoke Admin", username_update_path(user.slug, {update: "admin", revoke: "admin"}), method: :patch, class: 'btn btn-color' %></td>
             <% end %>
           </tr>
         <% end %>
