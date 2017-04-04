@@ -2,18 +2,24 @@ require 'rails_helper'
 
 describe "Admin" do
   it "can delete comments from project show" do
-    #create admin user
-    admin_user = create(:user)
-    admin_user.roles << Role.create!(name: "admin_user")
-    #create project
-    #create two comments for project
-    #visit projects/:slugged-project
+    user = create(:user)
+    user.roles << Role.create!(name: "admin_user")
+    project = create(:project)
+    project.comments << Comment.create!(author: "judge joe brown", content: "no comment", project_id: project.id)
+    project.comments << Comment.create!(author: "lemonSpark", content: "lemon lemon lemon", project_id: project.id)
 
-    #expect page to have two comments
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
-    #delete comment
+    visit "/projects/#{project.slug}"
 
-    #expect current path to be projects/:slugged-project
-    #expect page to have one comment
+    comments = page.all(".comment-thing")
+
+    within(comments[0]) do
+      click_on "Delete Comment"
+    end
+
+    expect(current_path).to eq "/projects/#{project.slug}"
+    expect(page).to have_content("lemonSpark")
+    expect(page).to_not have_content("judge joe brown")
   end
 end
