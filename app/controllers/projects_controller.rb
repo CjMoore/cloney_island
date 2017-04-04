@@ -105,7 +105,6 @@ class ProjectsController < ApplicationController
   end
 
   def update_project(contributor)
-    binding.pry
     @role = Role.find_or_create_by(name: "project_owner")
     @project = Project.find(params[:id])
     if @project.update(project_params)
