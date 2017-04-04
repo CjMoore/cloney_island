@@ -11,6 +11,10 @@ module ApplicationHelper
     current_user && current_user.project_owner?
   end
 
+  def admin_user?
+    current_user && current_user.admin_user?
+  end
+  
   def format_roles(role)
     role.split("_").join(" ")
   end

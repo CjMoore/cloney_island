@@ -35,7 +35,6 @@ class User < ApplicationRecord
     user_funded_projects.where(project_id: project.id).sum(:amount)
   end
 
-
 private
 
   def generate_slug
