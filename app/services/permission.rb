@@ -48,7 +48,7 @@ class Permission
   def project_owner_permissions
     return true if controller == "home"
     return true if controller == "sessions" && action.in?(["destroy"])
-    return true if controller == "projects" && action.in?(["index", "show", "new", "create", "edit", "update"])
+    return true if controller == "projects" && action.in?(["index", "show", "new", "create", "edit", "update", "update_status"])
     return true if controller == "users" && action.in?(["show", "edit", "update", "update_password"])
     return true if controller == "comments" && action.in?(["create"])
     return true if controller == "user_funded_projects" && action.in?(["new", "create"])
