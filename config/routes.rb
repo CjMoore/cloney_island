@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root "home#index"
 
   resources :projects, only: [:show, :index, :new, :create, :update] do
-    resources :comments, only: [:create, :delete]
+    resources :comments, only: [:create, :destroy]
     resources :user_funded_projects, only: [:create]
     resources :user_owned_projects, only: [:create]
     get      '/funds',  to: 'user_funded_projects#new'

@@ -92,11 +92,11 @@
                       </div>
                     </div>
                     <% if current_user.admin_user? %>
-                    <%= link_to "Delete Comment", project_path(@current_project), class: "btn btn-color right", method: :delete %>
+                    <%= link_to "Delete Comment", project_comment_path(@current_project, comment), class: "btn btn-color right", method: :delete %>
                     <% end %>
                   </div>
                 </div>
-                <% end  %>
+                <% end %>
               </div>
             </div>
           </div>

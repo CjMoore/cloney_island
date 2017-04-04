@@ -68,7 +68,7 @@ class Permission
     return true if controller == "sessions" && action.in?(["destroy"])
     return true if controller == "users" && action.in?(["show", "index"])
     return true if controller == "projects" && action.in?(["index", "show", "new", "create"])
-    return true if controller == "comments" && action.in?(["create", "delete"])
+    return true if controller == "comments" && action.in?(["create", "destroy"])
     return true if controller == "user_funded_projects" && action.in?(["new", "create"])
   end
 end

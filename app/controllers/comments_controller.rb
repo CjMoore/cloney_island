@@ -9,9 +9,9 @@ class CommentsController < ApplicationController
     redirect_to "/projects/#{@project.slug}"
   end
 
-  def delete
+  def destroy
     @delete_comment = Comment.find(params[:id]).destroy
     flash[:success] = "comment deleted!"
+    redirect_to request.referer
   end
-
 end
