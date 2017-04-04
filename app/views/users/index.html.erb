@@ -19,7 +19,7 @@
           <td><%= @user_roles.num_of_registered_users %></td>
           <td><%= @user_roles.num_of_project_owners %></td>
           <td><%= @user_roles.num_of_project_funders %></td>
-          <td><%= @user_roles.num_of_admins %></td>
+          <td class="num-admins"><%= @user_roles.num_of_admins %></td>
         </tr>
       </tbody>
     </table>
@@ -49,7 +49,11 @@
               </ul>
             </td>
             <td><%= button_to "Deactivate", "#", class: "btn btn-color" %></td>
-            <td><%= button_to "Make Admin", "#", class: "btn btn-color" %></td>
+            <% unless user.admin_user? %>
+              <td><%= button_to "Make Admin", username_update_path(user.slug, {update: "admin"}), class: "btn btn-color", method: :patch %></td>
+            <% else %>
+              <td> <%= button_to "Revoke Admin", username_update_path(user.slug, {update: "admin", revoke: "admin"}), method: :patch, class: 'btn btn-color' %></td>
+            <% end %>
           </tr>
         <% end %>
       </tbody>
