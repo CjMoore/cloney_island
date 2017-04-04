@@ -1,5 +1,3 @@
-
-
 /*colors*/
 
 $greenish: #81c784;
@@ -62,6 +60,7 @@ $beige: #f7f5f2;
   background: $plurple;
 }
 
+
 .btn-color:hover{
   background: $greenish
 }
@@ -96,6 +95,9 @@ description
 Comments
 ======
 */
+.btn-delete {
+  background-color: $the-orange;
+}
 .author {
   margin-bottom: 50px;
 }
