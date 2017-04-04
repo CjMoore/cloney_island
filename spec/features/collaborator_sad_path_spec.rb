@@ -59,4 +59,34 @@ describe "as a project owner when creating a project" do
     expect(page).to have_content("The email doesn't exit in our database.")
   end
 
+  it "cannot create project with invalid input - contributor email blank" do
+
+    visit "/projects/new"
+
+    fill_in "project[name]", with: "Luda concert"
+    fill_in "project[image_url]", with: "http://s4.evcdn.com/images/edpborder500/I0-001/004/230/967-2.jpeg_/ludacris-67.jpeg"
+    select "3 Months", from: "time[month]"
+    fill_in "project[total]", with: "5000"
+
+    click_on "Create Project"
+
+    expect(page).to have_content("Invalid input")
+    expect(current_path).to eq(new_project_path)
+  end
+
+  it "cannot create project with invalid input - contributor email valid" do
+
+    visit "/projects/new"
+
+    fill_in "project[name]", with: "Luda concert"
+    fill_in "project[image_url]", with: "http://s4.evcdn.com/images/edpborder500/I0-001/004/230/967-2.jpeg_/ludacris-67.jpeg"
+    select "3 Months", from: "time[month]"
+    fill_in "project[total]", with: "5000"
+    fill_in "contributor_email", with: "otheruser@example.com"
+
+    click_on "Create Project"
+
+    expect(page).to have_content("Please add valid information for your project.")
+    expect(current_path).to eq(new_project_path)
+  end
 end
