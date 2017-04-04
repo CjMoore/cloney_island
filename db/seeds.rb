@@ -148,7 +148,7 @@ class Seed
       avatar_url: Faker::Avatar.image
       )
       admin = Role.find_or_create_by(name: "admin_user")
-      user.roles << admin
+      user.roles << admin << Role.find_by(name: "registered_user")
       puts "ADMIN: #{user.username} created"
     end
   end
