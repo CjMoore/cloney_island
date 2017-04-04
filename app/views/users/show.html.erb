@@ -17,8 +17,9 @@
   <%= link_to "Edit", username_edit_path(slug: @registered_user.slug), class: "btn btn-color right" %>
   <%= link_to "Update Password", username_update_password_path(@registered_user.slug), class: "btn btn-color" %>
   <% if @registered_user.project_funder? %>
-  <table>
-    <h4 class="center">Projects I've Funded</h4>
+  <div class="card table-card">
+  <table class="bordered highlight">
+    <h4 class="center card-title black-text">Projects I've Funded</h4>
     <thead>
       <tr>
         <th class="center">Project Name</th>
@@ -43,13 +44,15 @@
   </table>
   <% end %>
 </div>
+</div>
 
 <br>
 <br>
   <% if @registered_user.project_owner? %>
 <div class="container">
-<h4 class="center">Projects I own</h4>
-    <table class="owned-projects">
+  <div class="card table-card">
+    <h4 class="card-title black-text center">Projects I Own</h4>
+    <table class="owned-projects bordered highlight" id="owned-table">
       <thead>
         <tr>
           <th class="center">Project Name</th>
@@ -68,11 +71,16 @@
           <td class="center"><%= number_to_currency(project.total_funds, precision: 2) %></td>
           <td class="center"><%= number_to_currency(project.total, precision: 2) %></td>
           <td class="center"></td>
+          <% if project.active? %>
           <td class="center"><%= link_to "Edit", project_edit_path(project.slug), class: "btn btn-color", id:"project-edit" %></td>
-          <td class="center"><%= link_to "Disable", project_edit_path(project.slug), class: "btn btn-color", id:"" %></td>
-        </tr>
+          <td class="center"><%= button_to "Disable", project_update_path(project, {status: "disable"}), controller: :projects, method: :update_status, class: "btn btn-color" %></td>
+          <% elsif project.disabled? %>
+          <td class="center"><%= button_to "Activate", project_update_path(project, {status: "active"}), controller: :projects, method: :update_status, class: "btn btn-color" %></td>
           <% end %>
+        </tr>
+        <% end %>
       </tbody>
     </table>
     <% end %>
+  </div>
 </div>

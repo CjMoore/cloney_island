@@ -67,19 +67,61 @@ class ProjectsController < ApplicationController
   end
 
   def edit
-    @project = Project.find_by_slug(params[:id])
+    @project = Project.find_by_slug(params[:project_id])
   end
 
   def update
-    project = Project.find_by_slug(params[:project_id])
+    if params[:contributor_email].empty?
+      update_without_contributor
+    else
+      is_contributor_valid_update
+    end
+  end
+
+
+  def update_without_contributor
+
+    project = Project.find(params[:id])
     if project.update(project_params)
+      flash[:notice] = "Your project has been updated."
       redirect_to project_path(project.slug)
     else
+      flash[:warning] = "We were unable to update the project. Please try again."
       render :edit
     end
   end
 
+  def update_status
+    @user = current_user
+    @project = current_user.owned_projects.find(params[:project_id])
+    unless params.include?("status")
+      project_update
+    else
+      check_status
+    end
+  end
+
   private
+
+  def project_update
+    if @project.update(project_params)
+      redirect_to project_path(@project.slug)
+      flash[:notice] = "You have successfully updated your project"
+    else
+      render :edit
+      flash[:danger] = "Invalid input"
+    end
+  end
+
+  def check_status
+    if params["status"] == "disable"
+      @project.disabled!
+      redirect_to username_path(@user.slug)
+    else
+      @project.active!
+      redirect_to username_path(@user.slug)
+    end
+  end
 
   def project_params
     params.require(:project).permit(:name, :description, :image_url, :total, :slug)

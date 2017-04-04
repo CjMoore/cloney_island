@@ -29,14 +29,22 @@ $beige: #f7f5f2;
 
 #total-funded {
   width: 150px;
-  margin-left: 200px;
   padding: 5px 0 5px 0;
   margin-top: 10px;
+  margin-left: 10px;
+}
+
+#my-funded {
+  width: 150px;
+  padding: 5px 0 5px 0;
+  margin-top: 10px;
+  margin-left: 10px;
 }
 
 #status-size {
   height: 20px;
   margin: 5px 0 5px 0;
+  max-width: 100%;
 }
 
 .status-color {

@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     get      '/funds',  to: 'user_funded_projects#new'
     get      '/edit', to: 'projects#edit'
     post     '/edit', to: 'projects#update'
+    post '/update', to: 'projects#update_status'
   end
 
 
@@ -16,6 +17,7 @@ Rails.application.routes.draw do
 
   get      '/login',    to: 'sessions#new', as: "login"
   get      '/signup',   to: 'users#new'
+  get      '/users',   to: 'users#index'
   post     '/login',    to: 'sessions#create'
   delete   '/logout',   to: 'sessions#destroy'
   post     '/signup',   to: 'users#create'

@@ -43,7 +43,7 @@ describe "a project owner can see their owned projects in dashboard" do
     expect(page).to have_content("Total Amount Funded")
     expect(page).to have_content("Total Amount Needed")
     expect(page).to have_link("Edit")
-    expect(page).to have_link("Disable")
+    expect(page).to have_button("Disable")
     end
   end
 end
