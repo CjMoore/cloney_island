@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "as a project owner project updates are saved" do
+describe "as a project owner project updates are saved when valid params are given" do
   it "updates project successfully" do
     user = create(:user)
     registered_user = create(:role)
