@@ -52,7 +52,7 @@
 <div class="container">
   <div class="card table-card">
     <h4 class="card-title black-text center">Projects I Own</h4>
-    <table class="owned-projects bordered highlight">
+    <table class="owned-projects bordered highlight" id="owned-table">
       <thead>
         <tr>
           <th class="center">Project Name</th>
@@ -71,8 +71,12 @@
           <td class="center"><%= number_to_currency(project.total_funds, precision: 2) %></td>
           <td class="center"><%= number_to_currency(project.total, precision: 2) %></td>
           <td class="center"></td>
+          <% if project.active? %>
           <td class="center"><%= link_to "Edit", project_edit_path(project.slug), class: "btn btn-color", id:"project-edit" %></td>
-          <td class="center"><%= link_to "Disable", "#", class: "btn btn-color", id:"" %></td>
+          <td class="center"><%= button_to "Disable", project_path(project, {status: "disable"}), method: :put, class: "btn btn-color" %></td>
+          <% elsif project.disabled? %>
+          <td class="center"><%= button_to "Activate", project_path(project, {status: "active"}), method: :put, class: "btn btn-color" %></td>
+          <% end %>
         </tr>
         <% end %>
       </tbody>

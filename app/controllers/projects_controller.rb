@@ -22,13 +22,13 @@ class ProjectsController < ApplicationController
       @user.roles << @role
       @project.owners << @user
       @contributor = User.find_by(email: params[:contributor_email])
-        if !@contributor.nil?
-          @contributor.roles << @role
-          @project.owners << @contributor
-          flash.now[:notice] = "You just added a new project owner."
-        else
-          flash.now[:warning] = "This email doesn't exist in our database and we cannot add them as a project owner."
-        end
+      if !@contributor.nil?
+        @contributor.roles << @role
+        @project.owners << @contributor
+        flash.now[:notice] = "You just added a new project owner."
+      else
+        flash.now[:warning] = "This email doesn't exist in our database and we cannot add them as a project owner."
+      end
       flash[:notice] = "Your project has been created!"
       redirect_to username_path(@user.username)
     else
@@ -42,7 +42,18 @@ class ProjectsController < ApplicationController
   end
 
   def update
+    @user = current_user
     @project = current_user.owned_projects.find(params[:id])
+    unless params.include?("status")
+      project_update
+    else
+      check_status
+    end
+  end
+
+  private
+
+  def project_update
     if @project.update(project_params)
       redirect_to project_path(@project.slug)
       flash[:notice] = "You have successfully updated your project"
@@ -52,7 +63,15 @@ class ProjectsController < ApplicationController
     end
   end
 
-  private
+  def check_status
+    if params["status"] == "disable"
+      @project.disabled!
+      redirect_to username_path(@user.slug)
+    else
+      @project.active!
+      redirect_to username_path(@user.slug)
+    end
+  end
 
   def project_params
     params.require(:project).permit(:name, :description, :image_url, :total, :slug)
