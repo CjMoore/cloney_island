@@ -31,6 +31,10 @@ class User < ApplicationRecord
     roles.exists?(name: "admin_user")
   end
 
+  def deactivated_user?
+    roles.exists?(name: "deactivated_user")
+  end
+
   def my_total_amount_funded(project)
     user_funded_projects.where(project_id: project.id).sum(:amount)
   end
