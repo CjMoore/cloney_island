@@ -26,5 +26,14 @@ class Project < ApplicationRecord
     if total < total_funds
       funded!
     end
+  end 
+  
+  def self.closest_funded
+    joins(:user_funded_projects)
+      .group(:id)
+      .select('projects.*, (projects.total - sum(user_funded_projects.amount)) AS funding_left')
+      .order('funding_left asc')
+      .having('(projects.total - sum(user_funded_projects.amount)) > 0')
+      .limit(3)
   end
 end
