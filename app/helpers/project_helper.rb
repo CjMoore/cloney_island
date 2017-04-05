@@ -22,4 +22,8 @@ module ProjectHelper
       100
     end
   end
+
+  def real_percent(total, funds)
+    ((funds.to_f/total.to_f)*100).round(0)
+  end
 end

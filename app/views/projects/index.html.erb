@@ -23,6 +23,12 @@
           </div>
           <div class="card-content">
             <p> <%= project.description %> </p>
+            <hb></hb>
+            <div class="status-bar progress grey lighten-2">
+              <div class="status-color determinate green lighten-2" style="width:<%= percent_funded(project.total, project.total_funds) %>%">
+                <p id="status-size"></p>
+              </div>
+            </div>
           </div>
           <div class="card-action">
             <a href="/projects/<%= project.slug %>"> <%= project.name %></a>

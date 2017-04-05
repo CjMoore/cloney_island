@@ -23,8 +23,8 @@
     <div class="col s1"><p></p>
     </div>
     <div class="card col s6 status-card">
-      <div class="status-bar">
-        <div class="status-color" style="width:<%= percent_funded(@current_project.total, @current_project.total_funds) %>%">
+      <div class="status-bar progress grey lighten-2">
+        <div class="status-color determinate" style="width:<%= percent_funded(@current_project.total, @current_project.total_funds) %>%">
           <p id="status-size"></p>
         </div>
       </div>
@@ -37,7 +37,7 @@
             <h6 class="center"><%= format_date(@current_project.time) %> time remaining to fund!</h6>
           </div>
           <div class="card col s1" id="percent-card">
-            <p class="center"><%=percent_funded(@current_project.total, @current_project.total_funds) %>%</p>
+            <p class="center"><%=real_percent(@current_project.total, @current_project.total_funds) %>%</p>
           </div>
         </div>
         <div class="row">

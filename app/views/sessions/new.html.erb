@@ -1,24 +1,23 @@
 <div class="container">
-
-
-<div class="row">
-  <div class="col s1"><p></p></div>
-  <div class="col s10">
-    <div class="card form-card">
-      <div class="card-content">
-        <span class="card-title black-text">Login</span>
-        <div class="login-form">
-        <%= form_for :session, url: login_path do |f| %>
-          <%= f.label :username %>
-          <%= f.text_field :username %>
-          <%= f.label :password %>
-          <%= f.password_field :password %>
-          <%= f.submit "Login", class: "btn btn-color" %>
-          <% end %>
+  <div class="row">
+    <div class="col s1"><p></p></div>
+    <div class="col s10">
+      <div class="card form-card">
+        <div class="card-content">
+          <span class="card-title black-text">Login</span>
+          <div class="login-form">
+          <%= form_for :session, url: login_path do |f| %>
+            <%= f.label :username %>
+            <%= f.text_field :username %>
+            <%= f.label :password %>
+            <%= f.password_field :password %>
+            <%= f.submit "Login", class: "btn btn-color" %>
+            <% end %>
+          </div>
         </div>
-      </div>
-      <div class="card-action">
-        <p>Dont have an account?<%= button_to "Create Account", signup_path, method: :get, class: "btn btn-color" %> </p>
+        <div class="card-action">
+          <p>Dont have an account?<%= button_to "Create Account", signup_path, method: :get, class: "btn btn-color" %> </p>
+        </div>
       </div>
     </div>
   </div>
