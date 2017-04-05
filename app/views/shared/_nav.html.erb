@@ -7,7 +7,7 @@
           <li><%= link_to "Logout", logout_path, method: :delete %></li>
           <li><%= link_to "Profile", username_path({username: current_user.slug}) %></li>
           <li><%= link_to "Start a Project", new_project_path %></li>
-          <% if current_user.admin_user?%>
+          <% if admin_user?%>
             <li><%= link_to "User Index", users_path %></li>
             <% end %>
         <% else %>

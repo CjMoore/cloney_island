@@ -12,10 +12,10 @@ RSpec.describe UserRole, type: :model do
   end
 
   it "methods" do
-    user = create(:user)
-    user2 = create(:user)
-    user3 = create(:user)
-    user4 = create(:user)
+    user = create(:user, username: "user")
+    user2 = create(:user, username: "user2")
+    user3 = create(:user, username: "user3")
+    user4 = create(:user, username: "user4")
     funder = Role.create(name: "project_funder", id: 3)
     admin = Role.create(name: "admin_user", id: 4)
     owner = Role.create(name: "project_owner", id: 2)

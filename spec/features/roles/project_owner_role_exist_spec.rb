@@ -4,7 +4,7 @@ describe "a registered user in the create project page" do
   it "can create project, gain project owner role and add a contributor" do
 
     user = create(:user)
-    contributor = create(:user, username: "geegee", email: "edilene-cruz@hotmail.com")
+    contributor = create(:user, username: "geegee", email: "edilene-cruz@hotmail.com", avatar_url: "https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=0ahUKEwipx5y7vYLTAhVD6mMKHfWqDYcQjRwIBw&url=http%3A%2F%2Fwww.pups-pals.com%2Fpuppy-kindergarten.html&psig=AFQjCNHf_ulNe6wevWaJNJWTKHXFKuNzPA&ust=1491109361985107")
     registered_role = create(:role)
     user.roles << registered_role
     contributor.roles << registered_role
