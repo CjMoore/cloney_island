@@ -44,7 +44,7 @@ class UsersController < ApplicationController
     unless @user.token.nil?
       TwilioService.new(@user).send_message
     else
-      flash[:notice] = "I'm sorry, I can't let you do that"
+      flash[:danger] = "I'm sorry, I can't let you do that"
       redirect_to "/#{@user.slug}"
     end
   end

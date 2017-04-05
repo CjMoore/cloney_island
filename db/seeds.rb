@@ -110,7 +110,7 @@ class Seed
   end
 
   def generate_funder_owners
-    100.times do |i|
+    200.times do |i|
       user = User.find(Random.new.rand(User.first.id..User.last.id))
       project = Project.find(Random.new.rand(Project.first.id..Project.last.id))
 

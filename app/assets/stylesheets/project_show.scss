@@ -4,6 +4,7 @@ $greenish: #81c784;
 $plurple: #3A1DD0;
 $the-orange: #ff9800;
 $beige: #f7f5f2;
+$light-red: #ef9a9a;
 
 
 .status-bar {
@@ -52,8 +53,8 @@ $beige: #f7f5f2;
 
 .status-color {
   border-radius: 5px;
-  margin-left: 5px;
-  background: linear-gradient(-90deg, $greenish, red);
+  // background: linear-gradient(150deg, $light-red, $greenish);
+  background: linear-gradient(42deg, $light-red 0%, $greenish 100%);
 }
 
 .btn-color {
