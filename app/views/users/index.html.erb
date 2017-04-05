@@ -16,7 +16,7 @@
       <tbody>
         <tr>
           <td><%= @users.count %></td>
-          <td><%= @user_roles.num_of_registered_users %></td>
+          <td class="num-regs"><%= @user_roles.num_of_registered_users %></td>
           <td><%= @user_roles.num_of_project_owners %></td>
           <td><%= @user_roles.num_of_project_funders %></td>
           <td class="num-admins"><%= @user_roles.num_of_admins %></td>
@@ -48,7 +48,11 @@
                 <% end %>
               </ul>
             </td>
-            <td><%= button_to "Deactivate", "#", class: "btn btn-color" %></td>
+            <% if user.registered_user? %>
+            <td><%= button_to "Deactivate", username_update_user_status_path(user.slug, {update_user_status: "deactivate"}), class: "btn btn-color" %></td>
+            <% else %>
+            <td><%= button_to "Activate", username_update_user_status_path(user.slug, {update_user_status: "activate"}), class: "btn btn-color" %></td>
+            <% end %>
             <% unless user.admin_user? %>
               <td><%= button_to "Make Admin", username_update_path(user.slug, {update: "admin"}), class: "btn btn-color", method: :patch %></td>
             <% else %>
