@@ -22,7 +22,6 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    byebug
     params.require(:comment).permit(:content)
   end
 end
