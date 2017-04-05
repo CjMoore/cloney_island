@@ -32,6 +32,9 @@
           </div>
           <div class="card-action">
             <a href="/projects/<%= project.slug %>"> <%= project.name %></a>
+            <% if project.check_if_funded %>
+              <div id="welcome">Funded!</div>
+            <% end %>
           </div>
         </div>
       </div>

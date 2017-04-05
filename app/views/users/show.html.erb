@@ -71,7 +71,7 @@
           <td class="center"><%= number_to_currency(project.total_funds, precision: 2) %></td>
           <td class="center"><%= number_to_currency(project.total, precision: 2) %></td>
           <td class="center"></td>
-          <% if project.active? %>
+          <% if project.active? || project.funded? %>
           <td class="center"><%= link_to "Edit", project_edit_path(project.slug), class: "btn btn-color", id:"project-edit" %></td>
           <td class="center"><%= button_to "Disable", project_update_path(project, {status: "disable"}), controller: :projects, method: :update_status, class: "btn btn-color" %></td>
           <% elsif project.disabled? %>
