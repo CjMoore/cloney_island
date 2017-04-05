@@ -16,7 +16,7 @@
   </div>
   <%= link_to "Edit", username_edit_path(slug: @registered_user.slug), class: "btn btn-color right" %>
   <%= link_to "Update Password", username_update_password_path(@registered_user.slug), class: "btn btn-color" %>
-  <% if @registered_user.project_funder? %>
+  <% if project_funder? %>
   <div class="card table-card">
   <table class="bordered highlight">
     <h4 class="center card-title black-text">Projects I've Funded</h4>
@@ -48,7 +48,7 @@
 
 <br>
 <br>
-  <% if @registered_user.project_owner? %>
+  <% if project_owner? %>
 <div class="container">
   <div class="card table-card">
     <h4 class="card-title black-text center">Projects I Own</h4>
