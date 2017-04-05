@@ -26,8 +26,8 @@ class Project < ApplicationRecord
     if total < total_funds
       funded!
     end
-  end 
-  
+  end
+
   def self.closest_funded
     joins(:user_funded_projects)
       .group(:id)

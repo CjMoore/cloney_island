@@ -1,24 +1,16 @@
-# README
+# CrowdFunder  
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Setup
+1. `git clone git@github.com:CjMoore/cloney_island.git`
 
-Things you may want to cover:
+2. `bundle`
 
-* Ruby version
+3. `rake db:setup`
 
-* System dependencies
+4. `rspec` *110 tests passing, 3 pending*
 
-* Configuration
+## localhost
+`rails s`
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Production
+`https://cloneyisland.herokuapp.com`
