@@ -30,6 +30,9 @@
       </div>
 
       <div class="row">
+        <% if @current_project.check_if_funded %>
+        <div id="welcome" class="center">Funded!</div>
+        <% end %>
         <div class="col s1 card" id="total-card">
           <h6 class="center" id="proj-total">Total Needed: <%= number_to_currency(@current_project.total, precision: 2) %><h6>
           </div>
