@@ -43,8 +43,7 @@ class ProjectsController < ApplicationController
     @project = current_user.owned_projects.find(params[:project_id])
     if params["status"] == "disable"
       @project.disabled!
-      redirect_to request.referer
-      # redirect_to username_path(@user.slug)
+      redirect_to username_path(@user.slug)
     else
       @project.active!
       redirect_to username_path(@user.slug)
