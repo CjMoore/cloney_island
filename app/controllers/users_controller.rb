@@ -53,6 +53,7 @@ class UsersController < ApplicationController
       if params[:update_user_status] == "deactivate"
         user = User.find_by_slug(params[:username])
         user.roles.delete(Role.find_by(name: "registered_user"))
+        user.roles << Role.find_or_create_by(name: "deactive_user")
         redirect_to users_path
       else
         user = User.find_by_slug(params[:username])
@@ -69,7 +70,6 @@ class UsersController < ApplicationController
       user_to_update.roles.delete(Role.find_by(name: "admin_user"))
       redirect_to users_path
     else
-      # binding.pry
       user_to_update = User.find_by_slug(params[:username])
       user_to_update.roles << Role.find_or_create_by(name: "admin_user")
       redirect_to users_path

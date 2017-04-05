@@ -31,13 +31,14 @@ describe "as an admin I can deactivate an user" do
     end
 
     expect(page).to have_button("Activate")
-    
+
     within('.user-info') do
       within('.num-regs') do
         expect(page).to have_content(0)
       end
     end
 
-    expect(@reg_user_1.roles.count).to eq(0)
+    expect(@reg_user_1.roles.count).to eq(1)
+    expect(@reg_user_1.roles[0].name).to eq("deactive_user")
   end
 end
