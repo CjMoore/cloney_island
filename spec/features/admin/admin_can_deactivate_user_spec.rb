@@ -27,7 +27,7 @@ describe "as an admin I can deactivate an user" do
     table_rows = page.all('.users-table tr')
 
     within(table_rows[2]) do
-      click_on("Deactivate")
+      click_button("Deactivate")
     end
 
     expect(page).to have_button("Activate")

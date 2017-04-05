@@ -14,8 +14,6 @@ class Permission
     @action = action
 
     case
-    when user.deactivated_user?
-      deactivated_user_permissions
     when user.admin_user?
       admin_user_permissions
     when user.project_owner?
@@ -30,10 +28,6 @@ class Permission
   end
 
   private
-
-  def deactivated_user_permissions
-    return true if controller == "sessions"
-  end
 
   def guest_user_permissions
     return true if controller == "home"
