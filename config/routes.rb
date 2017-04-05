@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
   post    "/projects/new", to: 'projects#create'
 
+  post "/username/update_user_status", path: ':username/update_user_status', to: 'users#update_user_status'
 
   get      '/login',    to: 'sessions#new', as: "login"
   get      '/signup',   to: 'users#new'

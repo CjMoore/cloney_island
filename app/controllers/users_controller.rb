@@ -22,7 +22,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @registered_user ||= User.find_by_slug(params[:username])
+    @registered_user = current_user
   end
 
   def edit
@@ -49,7 +49,22 @@ class UsersController < ApplicationController
     end
   end
 
+  def update_user_status
+      if params[:update_user_status] == "deactivated"
+        user = User.find_by_slug(params[:username])
+        user.roles << Role.find_or_create_by(name: "deactivated_user")
+        user.roles.delete(Role.find_by(name: "registered_user"))
+        redirect_to users_path
+      else
+        user = User.find_by_slug(params[:username])
+        user.roles << Role.find_or_create_by(name: "registered_user")
+        user.roles.delete(Role.find_by(name: "deactivated_user"))
+        redirect_to users_path
+    end
+  end
+
   private
+
 
   def update_admin
     if params[:revoke] == "admin"
