@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe "as an admin I can deactivate an user" do
   before(:each) do
-    admin = create(:user)
+    admin = create(:user, username: "admin")
     admin_user = create(:role, name: "admin_user", id: 4)
     admin.roles << admin_user
     @reg_user_1 = create(:user)
@@ -38,6 +38,6 @@ describe "as an admin I can deactivate an user" do
       end
     end
 
-    expect(@reg_user_1.roles.count).to eq(0)
+    expect(@reg_user_1.roles.count).to eq(1)
   end
 end

@@ -49,7 +49,7 @@
               </ul>
             </td>
             <% if user.registered_user? %>
-            <td><%= button_to "Deactivate", username_update_user_status_path(user.slug, {update_user_status: "deactivate"}), class: "btn btn-color" %></td>
+            <td><%= button_to "Deactivate", username_update_user_status_path(user.slug, {update_user_status: "deactivated"}), class: "btn btn-color" %></td>
             <% else %>
             <td><%= button_to "Activate", username_update_user_status_path(user.slug, {update_user_status: "activate"}), class: "btn btn-color" %></td>
             <% end %>

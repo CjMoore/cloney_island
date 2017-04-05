@@ -31,8 +31,8 @@ class User < ApplicationRecord
     roles.exists?(name: "admin_user")
   end
 
-  def deactive_user?
-    roles.exists?(name: "deactive_user")
+  def deactivated_user?
+    roles.exists?(name: "deactivated_user")
   end
 
   def my_total_amount_funded(project)
