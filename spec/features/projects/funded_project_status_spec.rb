@@ -5,7 +5,7 @@ describe "Funded Project" do
     user = create(:user)
     role = create(:role, name: "project_funder" )
     user.roles << role
-    project  = create(:project)
+    project  = create(:project, status: "funded")
     project2 = create(:project)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
@@ -19,9 +19,12 @@ describe "Funded Project" do
     within(funded[0]) do
       expect(page).to have_content("Funded!")
     end
+    expect(project.status).to eq "funded"
 
     within(funded[1]) do
       expect(page).to_not have_content("Funded!")
     end
+    expect(project2.status).to_not eq "funded"
+
   end
 end
