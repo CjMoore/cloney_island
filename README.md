@@ -1,5 +1,11 @@
 # CrowdFunder  
 
+## Developed by
+*Charlotte Moore* |
+*Spencer Carter* |
+*Edilene Cruz* |
+*Eric Wahlgren-Sauro*
+
 ## Setup
 1. `git clone git@github.com:CjMoore/cloney_island.git`
 
