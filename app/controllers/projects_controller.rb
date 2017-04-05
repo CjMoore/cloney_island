@@ -57,7 +57,6 @@ class ProjectsController < ApplicationController
   end
 
   def update_without_contributor
-    byebug
     if @project.update(project_params)
       flash[:notice] = "Your project has been updated."
       redirect_to project_path(@project.slug)
