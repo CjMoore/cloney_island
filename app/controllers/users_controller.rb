@@ -22,7 +22,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @registered_user ||= User.find_by_slug(params[:username])
+    @registered_user = current_user
   end
 
   def edit
