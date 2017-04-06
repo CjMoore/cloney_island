@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
 
   def create
     @user = User.find_by(username: params[:session][:username])
-    if @user.deactivated_user?
+    if @user && @user.deactivated_user?
       flash[:danger] = "You have been banned from Crowdfunder!"
       redirect_to root_path
     elsif @user && @user.authenticate(params[:session][:password])
