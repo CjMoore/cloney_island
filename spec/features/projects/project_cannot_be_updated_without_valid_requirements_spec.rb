@@ -73,7 +73,7 @@ describe "as a project cannot be edited when invalid information is given or mis
 
     click_on("Update Project")
 
-    expect(page).to have_content("Your project was not updated, please enter valid project information.")
+    expect(page).to have_content("Description can't be blank")
   end
 
 end

@@ -83,7 +83,7 @@ class ProjectsController < ApplicationController
       flash[:notice] = "Your project has been updated."
       redirect_to project_path(@project.slug)
     else
-      flash[:warning] = "Your project was not updated, please enter valid project information."
+      flash[:error] = @project.errors.full_messages.to_sentence
       render :edit
     end
   end
@@ -97,7 +97,7 @@ class ProjectsController < ApplicationController
       flash[:notice] = "You just created a project without a contributor!"
       redirect_to username_path(@user.username)
     else
-      flash[:warning] = "Invalid input"
+      flash[:error] = @project.errors.full_messages.to_sentence
       render :new
     end
   end
@@ -123,7 +123,7 @@ class ProjectsController < ApplicationController
       flash[:notice] = "A project was created with #{@contributor.first_name} as a joint owner."
       redirect_to username_path(@user.username)
     else
-      flash[:warning] = "Please add valid information for your project."
+      flash[:error] = @project.errors.full_messages.to_sentence
       render :new
     end
   end

@@ -70,7 +70,7 @@ describe "as a project owner when creating a project" do
 
     click_on "Create Project"
 
-    expect(page).to have_content("Invalid input")
+    expect(page).to have_content("Description can't be blank")
     expect(current_path).to eq(new_project_path)
   end
 
@@ -85,8 +85,8 @@ describe "as a project owner when creating a project" do
     fill_in "contributor_email", with: "otheruser@example.com"
 
     click_on "Create Project"
-
-    expect(page).to have_content("Please add valid information for your project.")
+    
+    expect(page).to have_content("Description can't be blank")
     expect(current_path).to eq(new_project_path)
   end
 end

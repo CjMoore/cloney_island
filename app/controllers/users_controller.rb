@@ -84,7 +84,7 @@ class UsersController < ApplicationController
       flash[:notice] = "Account info updated"
       redirect_to "/#{@user.slug}"
     else
-      flash[:danger] = "Invalid Input"
+      flash[:error] = @user.errors.full_messages.to_sentence
       render :edit
     end
   end
@@ -93,7 +93,7 @@ class UsersController < ApplicationController
     if @user && @user.authenticate(params[:user][:password])
       check_token
     else
-      flash[:danger] = "Invalid Input"
+      flash[:error] = @user.errors.full_messages.to_sentence
       redirect_to "/#{@user.slug}/update_password"
     end
   end
