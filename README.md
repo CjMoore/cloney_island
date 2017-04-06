@@ -13,7 +13,7 @@
 
 3. `rake db:setup`
 
-4. `rspec` *110 tests passing, 3 pending*
+4. `rspec` *113 tests passing, 3 pending*
 
 ## localhost
 `rails s`
