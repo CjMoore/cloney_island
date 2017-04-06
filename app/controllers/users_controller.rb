@@ -17,6 +17,7 @@ class UsersController < ApplicationController
       flash[:notice] = "Logged in as #{@user.first_name}"
       redirect_to root_path
     else
+      flash[:error] = @user.errors.full_messages.to_sentence
       render :new
     end
   end

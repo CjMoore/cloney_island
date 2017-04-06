@@ -1,7 +1,7 @@
 require "rails_helper"
 
 describe "when user wants to update their password" do
-  xit "they have to provide an auth code sent by sms" do
+  it "they have to provide an auth code sent by sms" do
     user = create(:user, phone: "2025313141")
     role = create(:role)
     user.roles << role
@@ -56,7 +56,7 @@ describe "when user wants to update their password" do
     end
   end
 
-  xit "they cannot edit password without token" do
+  it "they cannot edit password without token" do
     user = create(:user, phone: "2025313141")
     role = create(:role)
     user.roles << role
@@ -95,7 +95,7 @@ describe "when user wants to update their password" do
     expect(current_path).to eq("/#{user.slug}/update_password")
   end
 
-  xit "they have to enter their correct password and be authroized" do
+  it "they have to enter their correct password and be authroized" do
     user = create(:user, phone: "2025313141")
     role = create(:role)
     user.roles << role
