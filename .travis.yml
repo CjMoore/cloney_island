@@ -1,0 +1,9 @@
+language: ruby
+rvm:
+  2.1.2
+services:
+  - postgresql
+before_script:
+- psql -c 'create database job_basket_test;' -U postgres
+
+script: bundle exec rspec spec
